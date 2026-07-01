@@ -10,3 +10,4 @@ import './lightmode.css';
 
 // Import app logic
 import './app.js';
+import './details.js';
