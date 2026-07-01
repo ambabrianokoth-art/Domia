@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Users Export Template - Domia Ventures</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Calibri', 'Arial', sans-serif; font-size: 11pt; background: #fff; color: #1a1a1a; }
+
+  /* Top brand banner */
+  .brand-banner {
+    background: #253745;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand-logo { display: flex; align-items: center; gap: 10px; }
+  .brand-logo-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: #F25022; display: flex; align-items: center;
+    justify-content: center; color: #fff; font-weight: 800; font-size: 16px;
+  }
+  .brand-logo-text { color: #fff; font-size: 16px; font-weight: 700; letter-spacing: 0.3px; }
+  .brand-logo-sub { color: rgba(255,255,255,0.55); font-size: 10px; margin-top: 1px; }
+  .brand-meta { text-align: right; color: rgba(255,255,255,0.7); font-size: 10px; line-height: 1.6; }
+  .brand-meta strong { color: #F25022; }
+
+  /* Report header */
+  .report-header {
+    background: #f8fafb; border-bottom: 3px solid #F25022;
+    padding: 16px 24px; display: flex; align-items: flex-start; justify-content: space-between;
+  }
+  .report-title { font-size: 18px; font-weight: 700; color: #253745; }
+  .report-subtitle { font-size: 11px; color: #6c757d; margin-top: 2px; }
+  .report-badges { display: flex; gap: 8px; margin-top: 6px; }
+  .badge {
+    padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 600;
+    background: rgba(242,80,34,0.1); color: #F25022;
+  }
+  .badge.green { background: rgba(33,115,70,0.1); color: #217346; }
+  .report-info { text-align: right; font-size: 10px; color: #6c757d; line-height: 1.8; }
+  .report-info strong { color: #253745; }
+
+  /* Excel-styled table */
+  .excel-wrapper { padding: 20px 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 10.5pt; }
+
+  /* Column header row */
+  thead tr.col-header th {
+    background: #217346; color: #fff; font-weight: 700;
+    padding: 8px 10px; text-align: left; border: 1px solid #1a5c38;
+    font-size: 10pt; white-space: nowrap;
+  }
+
+  /* Sub-header / category */
+  thead tr.sub-header th {
+    background: #2B3E4B; color: #BBAACC;
+    padding: 4px 10px; font-size: 9pt; border: 1px solid #3d5a6b;
+  }
+
+  /* Data rows */
+  tbody tr td {
+    padding: 7px 10px; border: 1px solid #dde3ea;
+    font-size: 10pt; color: #1a2a36; vertical-align: middle;
+  }
+  tbody tr:nth-child(even) td { background: #f0faf5; }
+  tbody tr:nth-child(odd) td { background: #ffffff; }
+  tbody tr:hover td { background: #e8f5ed; }
+
+  /* Status cells */
+  .cell-active { color: #16a34a; font-weight: 600; }
+  .cell-inactive { color: #9aa5b4; }
+  .cell-admin { color: #F25022; font-weight: 600; }
+  .cell-num { text-align: right; font-variant-numeric: tabular-nums; }
+  .cell-center { text-align: center; }
+
+  /* Row numbers */
+  td.row-num { background: #f4f6f8 !important; color: #9aa5b4; text-align: center; font-size: 9pt; width: 32px; border-right: 2px solid #dde3ea; }
+  th.row-num-head { background: #1a5c38 !important; width: 32px; text-align: center; }
+
+  /* Totals row */
+  tfoot tr td {
+    background: #253745 !important; color: #fff !important;
+    font-weight: 700; padding: 8px 10px; border: 1px solid #3d5a73;
+  }
+  tfoot tr td.cell-num { color: #9fcf67 !important; }
+
+  /* Footer */
+  .excel-footer {
+    margin: 0 24px; padding: 12px 0; border-top: 2px solid #F25022;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 9pt; color: #9aa5b4;
+  }
+  .excel-footer .footer-brand { color: #F25022; font-weight: 700; }
+  .excel-footer .footer-note { font-style: italic; }
+
+  @media print {
+    .brand-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    thead tr.col-header th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    thead tr.sub-header th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    tbody tr:nth-child(even) td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    tfoot tr td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @page { margin: 10mm; size: A4 landscape; }
+  }
+</style>
+</head>
+<body>
+
+<div class="brand-banner">
+  <div class="brand-logo">
+    <div class="brand-logo-icon">D</div>
+    <div>
+      <div class="brand-logo-text">Domia Ventures LTD</div>
+      <div class="brand-logo-sub">Property Management System</div>
+    </div>
+  </div>
+  <div class="brand-meta">
+    <div><strong>Export Date:</strong> 24 Jun 2026</div>
+    <div><strong>Template:</strong> Users Register</div>
+    <div><strong>Format:</strong> Excel (.xlsx)</div>
+  </div>
+</div>
+
+<div class="report-header">
+  <div>
+    <div class="report-title">Users Register</div>
+    <div class="report-subtitle">System users, roles and access levels</div>
+    <div class="report-badges">
+      <span class="badge green">Excel Template</span>
+      <span class="badge">Staff Management</span>
+    </div>
+  </div>
+  <div class="report-info">
+    <div><strong>Total Records:</strong> 24</div>
+    <div><strong>Active Users:</strong> 20</div>
+    <div><strong>Inactive:</strong> 4</div>
+    <div><strong>Generated by:</strong> Admin</div>
+  </div>
+</div>
+
+<div class="excel-wrapper">
+  <table>
+    <thead>
+      <tr class="col-header">
+        <th class="row-num-head">#</th>
+        <th>User ID</th>
+        <th>Full Name</th>
+        <th>Email Address</th>
+        <th>Phone Number</th>
+        <th>Role / Position</th>
+        <th>Department</th>
+        <th>Status</th>
+        <th>Last Login</th>
+        <th>Date Created</th>
+        <th>2FA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="row-num">1</td>
+        <td>USR-0001</td><td>Sarah Mwangi</td><td>sarah.mwangi@domia.com</td>
+        <td>+254 712 345 001</td><td class="cell-admin">Super Admin</td>
+        <td>Management</td><td class="cell-active">Active</td>
+        <td>24 Jun 2026 09:12</td><td>01 Jan 2023</td><td class="cell-center">Yes</td>
+      </tr>
+      <tr>
+        <td class="row-num">2</td>
+        <td>USR-0002</td><td>James Odhiambo</td><td>james.o@domia.com</td>
+        <td>+254 722 345 002</td><td>Property Manager</td>
+        <td>Operations</td><td class="cell-active">Active</td>
+        <td>24 Jun 2026 08:45</td><td>15 Mar 2023</td><td class="cell-center">Yes</td>
+      </tr>
+      <tr>
+        <td class="row-num">3</td>
+        <td>USR-0003</td><td>Faith Njeri</td><td>faith.n@domia.com</td>
+        <td>+254 733 345 003</td><td>Finance Officer</td>
+        <td>Finance</td><td class="cell-active">Active</td>
+        <td>23 Jun 2026 16:22</td><td>20 Apr 2023</td><td class="cell-center">No</td>
+      </tr>
+      <tr>
+        <td class="row-num">4</td>
+        <td>USR-0004</td><td>Peter Kamau</td><td>peter.k@domia.com</td>
+        <td>+254 744 345 004</td><td>Maintenance Lead</td>
+        <td>Maintenance</td><td class="cell-active">Active</td>
+        <td>24 Jun 2026 07:30</td><td>10 May 2023</td><td class="cell-center">No</td>
+      </tr>
+      <tr>
+        <td class="row-num">5</td>
+        <td>USR-0005</td><td>Grace Achieng</td><td>grace.a@domia.com</td>
+        <td>+254 755 345 005</td><td>Leasing Agent</td>
+        <td>Sales</td><td class="cell-active">Active</td>
+        <td>22 Jun 2026 14:10</td><td>01 Jun 2023</td><td class="cell-center">Yes</td>
+      </tr>
+      <tr>
+        <td class="row-num">6</td>
+        <td>USR-0006</td><td>David Mutua</td><td>david.m@domia.com</td>
+        <td>+254 766 345 006</td><td>Accountant</td>
+        <td>Finance</td><td class="cell-inactive">Inactive</td>
+        <td>10 Jan 2026 09:00</td><td>15 Jun 2023</td><td class="cell-center">No</td>
+      </tr>
+      <tr>
+        <td class="row-num">7</td>
+        <td>USR-0007</td><td>Eunice Wambua</td><td>eunice.w@domia.com</td>
+        <td>+254 777 345 007</td><td>Property Manager</td>
+        <td>Operations</td><td class="cell-active">Active</td>
+        <td>24 Jun 2026 10:05</td><td>01 Aug 2023</td><td class="cell-center">Yes</td>
+      </tr>
+      <tr>
+        <td class="row-num">8</td>
+        <td>USR-0008</td><td>Allan Otieno</td><td>allan.o@domia.com</td>
+        <td>+254 788 345 008</td><td>Security Officer</td>
+        <td>Operations</td><td class="cell-active">Active</td>
+        <td>24 Jun 2026 06:00</td><td>20 Sep 2023</td><td class="cell-center">No</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="row-num"></td>
+        <td colspan="6"><strong>TOTAL USERS</strong></td>
+        <td><strong>24 Users</strong></td>
+        <td colspan="2"></td>
+        <td class="cell-num"></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<div class="excel-footer">
+  <div><span class="footer-brand">Domia Ventures LTD</span> &mdash; Property Management System &copy; 2026</div>
+  <div class="footer-note">CONFIDENTIAL &mdash; For internal use only. Do not distribute.</div>
+  <div>Page 1 of 1</div>
+</div>
+
+</body>
+</html>

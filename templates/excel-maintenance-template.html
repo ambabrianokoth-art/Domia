@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Maintenance Export Template - Domia Ventures</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Calibri', 'Arial', sans-serif; font-size: 11pt; background: #fff; color: #1a1a1a; }
+  .brand-banner { background: #253745; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .brand-logo { display: flex; align-items: center; gap: 10px; }
+  .brand-logo-icon { width: 36px; height: 36px; border-radius: 8px; background: #F25022; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 16px; }
+  .brand-logo-text { color: #fff; font-size: 16px; font-weight: 700; }
+  .brand-logo-sub { color: rgba(255,255,255,0.55); font-size: 10px; margin-top: 1px; }
+  .brand-meta { text-align: right; color: rgba(255,255,255,0.7); font-size: 10px; line-height: 1.6; }
+  .brand-meta strong { color: #F25022; }
+  .report-header { background: #f8fafb; border-bottom: 3px solid #F25022; padding: 16px 24px; display: flex; align-items: flex-start; justify-content: space-between; }
+  .report-title { font-size: 18px; font-weight: 700; color: #253745; }
+  .report-subtitle { font-size: 11px; color: #6c757d; margin-top: 2px; }
+  .report-badges { display: flex; gap: 8px; margin-top: 6px; }
+  .badge { padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; background: rgba(242,80,34,0.1); color: #F25022; }
+  .badge.green { background: rgba(33,115,70,0.1); color: #217346; }
+  .report-info { text-align: right; font-size: 10px; color: #6c757d; line-height: 1.8; }
+  .report-info strong { color: #253745; }
+  .excel-wrapper { padding: 20px 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+  thead tr.col-header th { background: #217346; color: #fff; font-weight: 700; padding: 8px 10px; text-align: left; border: 1px solid #1a5c38; white-space: nowrap; }
+  tbody tr td { padding: 7px 10px; border: 1px solid #dde3ea; color: #1a2a36; vertical-align: middle; }
+  tbody tr:nth-child(even) td { background: #f0faf5; }
+  tbody tr:nth-child(odd) td { background: #ffffff; }
+  .cell-done { color: #16a34a; font-weight: 600; }
+  .cell-progress { color: #0d9488; font-weight: 600; }
+  .cell-pending { color: #d97706; font-weight: 600; }
+  .cell-critical { color: #dc2626; font-weight: 700; }
+  .cell-high { color: #ea580c; font-weight: 600; }
+  .cell-medium { color: #d97706; }
+  .cell-num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.row-num { background: #f4f6f8 !important; color: #9aa5b4; text-align: center; font-size: 9pt; width: 32px; border-right: 2px solid #dde3ea; }
+  th.row-num-head { background: #1a5c38 !important; width: 32px; text-align: center; }
+  tfoot tr td { background: #253745 !important; color: #fff !important; font-weight: 700; padding: 8px 10px; border: 1px solid #3d5a73; }
+  .excel-footer { margin: 0 24px; padding: 12px 0; border-top: 2px solid #F25022; display: flex; justify-content: space-between; align-items: center; font-size: 9pt; color: #9aa5b4; }
+  .excel-footer .footer-brand { color: #F25022; font-weight: 700; }
+  @media print { .brand-banner, thead tr th, tfoot tr td { -webkit-print-color-adjust: exact; print-color-adjust: exact; } @page { margin: 10mm; size: A4 landscape; } }
+</style>
+</head>
+<body>
+<div class="brand-banner">
+  <div class="brand-logo">
+    <div class="brand-logo-icon">D</div>
+    <div><div class="brand-logo-text">Domia Ventures LTD</div><div class="brand-logo-sub">Property Management System</div></div>
+  </div>
+  <div class="brand-meta"><div><strong>Export Date:</strong> 24 Jun 2026</div><div><strong>Template:</strong> Maintenance Requests</div><div><strong>Format:</strong> Excel (.xlsx)</div></div>
+</div>
+<div class="report-header">
+  <div>
+    <div class="report-title">Maintenance Requests Register</div>
+    <div class="report-subtitle">All maintenance requests, priorities, assignees and status</div>
+    <div class="report-badges"><span class="badge green">Excel Template</span><span class="badge">Maintenance</span></div>
+  </div>
+  <div class="report-info">
+    <div><strong>Total Requests:</strong> 124</div>
+    <div><strong>Pending:</strong> 28</div>
+    <div><strong>In Progress:</strong> 36</div>
+    <div><strong>Completed:</strong> 60</div>
+  </div>
+</div>
+<div class="excel-wrapper">
+  <table>
+    <thead>
+      <tr class="col-header">
+        <th class="row-num-head">#</th>
+        <th>Request ID</th><th>Date Raised</th><th>Property</th><th>Unit</th>
+        <th>Category</th><th>Description</th><th>Priority</th>
+        <th>Assigned To</th><th>Est. Cost (Ksh)</th><th>Actual Cost (Ksh)</th>
+        <th>Date Resolved</th><th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="row-num">1</td><td>MNT-2026-001</td><td>05 Jun 2026</td><td>Green Valley</td><td>A-204</td><td>Plumbing</td><td>Burst pipe in kitchen</td><td class="cell-critical">Critical</td><td>Mike Johnson</td><td class="cell-num">35,000</td><td class="cell-num">38,500</td><td>07 Jun 2026</td><td class="cell-done">Completed</td></tr>
+      <tr><td class="row-num">2</td><td>MNT-2026-002</td><td>08 Jun 2026</td><td>Downtown Plaza</td><td>Common</td><td>Electrical</td><td>Power outage - floor 3</td><td class="cell-critical">Critical</td><td>Tony Electricals</td><td class="cell-num">85,000</td><td class="cell-num">82,000</td><td>09 Jun 2026</td><td class="cell-done">Completed</td></tr>
+      <tr><td class="row-num">3</td><td>MNT-2026-003</td><td>10 Jun 2026</td><td>Westlands Heights</td><td>B-301</td><td>Carpentry</td><td>Broken door frame</td><td class="cell-medium">Medium</td><td>Fix It Carpenters</td><td class="cell-num">12,000</td><td class="cell-num">&mdash;</td><td>&mdash;</td><td class="cell-progress">In Progress</td></tr>
+      <tr><td class="row-num">4</td><td>MNT-2026-004</td><td>12 Jun 2026</td><td>Kilimani Gardens</td><td>D-102</td><td>Painting</td><td>Wall repainting after water damage</td><td class="cell-medium">Medium</td><td>Colour Masters</td><td class="cell-num">28,000</td><td class="cell-num">&mdash;</td><td>&mdash;</td><td class="cell-pending">Pending</td></tr>
+      <tr><td class="row-num">5</td><td>MNT-2026-005</td><td>14 Jun 2026</td><td>Lavington Court</td><td>F-201</td><td>HVAC</td><td>AC unit not cooling</td><td class="cell-high">High</td><td>CoolTech HVAC</td><td class="cell-num">45,000</td><td class="cell-num">&mdash;</td><td>&mdash;</td><td class="cell-progress">In Progress</td></tr>
+      <tr><td class="row-num">6</td><td>MNT-2026-006</td><td>16 Jun 2026</td><td>Parklands Court</td><td>Common</td><td>Landscaping</td><td>Garden drainage issue</td><td class="cell-medium">Medium</td><td>Peter Kamau</td><td class="cell-num">18,000</td><td class="cell-num">16,500</td><td>20 Jun 2026</td><td class="cell-done">Completed</td></tr>
+      <tr><td class="row-num">7</td><td>MNT-2026-007</td><td>18 Jun 2026</td><td>Green Valley</td><td>A-108</td><td>Plumbing</td><td>Leaking tap in bathroom</td><td class="cell-medium">Low</td><td>Rapid Plumbers</td><td class="cell-num">5,000</td><td class="cell-num">&mdash;</td><td>&mdash;</td><td class="cell-pending">Pending</td></tr>
+      <tr><td class="row-num">8</td><td>MNT-2026-008</td><td>20 Jun 2026</td><td>Downtown Plaza</td><td>Lift</td><td>Lift / Elevator</td><td>Elevator stuck on floor 2</td><td class="cell-critical">Critical</td><td>Otis Elevators</td><td class="cell-num">180,000</td><td class="cell-num">&mdash;</td><td>&mdash;</td><td class="cell-progress">In Progress</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td class="row-num"></td><td colspan="8"><strong>TOTAL ESTIMATED COST &nbsp;|&nbsp; TOTAL ACTUAL COST</strong></td><td class="cell-num"><strong>408,000</strong></td><td class="cell-num"><strong>137,000</strong></td><td colspan="2"></td></tr>
+    </tfoot>
+  </table>
+</div>
+<div class="excel-footer">
+  <div><span class="footer-brand">Domia Ventures LTD</span> &mdash; Property Management System &copy; 2026</div>
+  <div style="font-style:italic;">CONFIDENTIAL &mdash; For internal use only.</div>
+  <div>Page 1 of 1</div>
+</div>
+</body>
+</html>

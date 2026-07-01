@@ -1,0 +1,995 @@
+# Task Management System API Documentation
+
+## Base URL
+Development: `http://localhost:8000/api`
+Production: `https://your-backend-url.com/api`
+
+## Response Format
+All API responses follow this standard format:
+```json
+{
+  "result_code": 1,  // 1 for success, 0 for error
+  "data": {},        // Response data (string, array, or object)
+  "message": "Success message or error description"
+}
+```
+
+## Error Handling
+- HTTP Status Codes: 200 (Success), 401 (Unauthorized), 422 (Validation Error), 500 (Server Error)
+- Authentication errors return 401 with appropriate message
+- Validation errors return 422 with detailed field errors
+- Server errors return 500 with error message
+
+---
+
+## Authentication Endpoints
+
+### 1. User Registration
+**POST** `/auth/register`
+
+**Request Body:**
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123",
+  "password_confirmation": "password123"
+}
+```
+
+**Success Response (201):**
+```json
+{
+  "result_code": 1,
+  "data": {
+    "user": {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "role": "guest",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  "message": "User registered successfully"
+}
+```
+
+**Error Response (422):**
+```json
+{
+  "result_code": 0,
+  "data": {
+    "email": ["The email has already been taken."],
+    "password": ["The password must be at least 8 characters."]
+  },
+  "message": "Validation failed"
+}
+```
+
+### 2. User Login
+**POST** `/auth/login`
+
+**Request Body:**
+```json
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": {
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "user": {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "role": "guest",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  "message": "Login successful"
+}
+```
+
+**Error Response (401):**
+```json
+{
+  "result_code": 0,
+  "data": "",
+  "message": "Invalid credentials"
+}
+```
+
+### 3. User Logout
+**POST** `/auth/logout`
+
+**Headers:**
+```
+Authorization: Bearer {token}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": "",
+  "message": "Logged out successfully"
+}
+```
+
+### 4. Forgot Password
+**POST** `/auth/forgot-password`
+
+**Request Body:**
+```json
+{
+  "email": "john@example.com"
+}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": "",
+  "message": "Password reset email sent successfully"
+}
+```
+
+### 5. Reset Password
+**POST** `/auth/reset-password`
+
+**Request Body:**
+```json
+{
+  "token": "reset_token_here",
+  "password": "newpassword123",
+  "password_confirmation": "newpassword123"
+}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": "",
+  "message": "Password reset successfully"
+}
+```
+
+---
+
+## User Management Endpoints (Admin Only)
+
+### 1. Get All Users
+**GET** `/users`
+
+**Headers:**
+```
+Authorization: Bearer {admin_token}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "role": "guest",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Jane Admin",
+      "email": "jane@example.com",
+      "role": "admin",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  ],
+  "message": "Users retrieved successfully"
+}
+```
+
+### 2. Create User
+**POST** `/users`
+
+**Headers:**
+```
+Authorization: Bearer {admin_token}
+```
+
+**Request Body:**
+```json
+{
+  "name": "New User",
+  "email": "newuser@example.com",
+  "password": "password123",
+  "role": "guest"
+}
+```
+
+**Success Response (201):**
+```json
+{
+  "result_code": 1,
+  "data": {
+    "id": 3,
+    "name": "New User",
+    "email": "newuser@example.com",
+    "role": "guest",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z"
+  },
+  "message": "User created successfully"
+}
+```
+
+### 3. Update User
+**PUT** `/users/{id}`
+
+**Headers:**
+```
+Authorization: Bearer {admin_token}
+```
+
+**Request Body:**
+```json
+{
+  "name": "Updated Name",
+  "email": "updated@example.com",
+  "role": "admin"
+}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": {
+    "id": 1,
+    "name": "Updated Name",
+    "email": "updated@example.com",
+    "role": "admin",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z"
+  },
+  "message": "User updated successfully"
+}
+```
+
+### 4. Delete User
+**DELETE** `/users/{id}`
+
+**Headers:**
+```
+Authorization: Bearer {admin_token}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": "",
+  "message": "User deleted successfully"
+}
+```
+
+---
+
+## Task Management Endpoints
+
+### 1. Get All Tasks (Admin Only)
+**GET** `/tasks`
+
+**Headers:**
+```
+Authorization: Bearer {admin_token}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": [
+    {
+      "id": 1,
+      "title": "Complete Project Setup",
+      "description": "Set up the initial project structure and dependencies",
+      "status": "pending",
+      "deadline": "2025-01-15T23:59:59Z",
+      "assigned_to": 1,
+      "assigned_by": 2,
+      "user": {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john@example.com"
+      },
+      "assignedBy": {
+        "id": 2,
+        "name": "Jane Admin",
+        "email": "jane@example.com"
+      },
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  ],
+  "message": "Tasks retrieved successfully"
+}
+```
+
+### 2. Get User Tasks (Guest Only)
+**GET** `/tasks/my-tasks`
+
+**Headers:**
+```
+Authorization: Bearer {user_token}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": [
+    {
+      "id": 1,
+      "title": "Complete Project Setup",
+      "description": "Set up the initial project structure and dependencies",
+      "status": "pending",
+      "deadline": "2025-01-15T23:59:59Z",
+      "assigned_to": 1,
+      "assigned_by": 2,
+      "user": {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john@example.com"
+      },
+      "assignedBy": {
+        "id": 2,
+        "name": "Jane Admin",
+        "email": "jane@example.com"
+      },
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  ],
+  "message": "User tasks retrieved successfully"
+}
+```
+
+### 3. Create Task (Admin Only)
+**POST** `/tasks`
+
+**Headers:**
+```
+Authorization: Bearer {admin_token}
+```
+
+**Request Body:**
+```json
+{
+  "title": "New Task",
+  "description": "Task description here",
+  "deadline": "2025-01-20T23:59:59Z",
+  "assigned_to": 1
+}
+```
+
+**Success Response (201):**
+```json
+{
+  "result_code": 1,
+  "data": {
+    "id": 2,
+    "title": "New Task",
+    "description": "Task description here",
+    "status": "pending",
+    "deadline": "2025-01-20T23:59:59Z",
+    "assigned_to": 1,
+    "assigned_by": 2,
+    "user": {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com"
+    },
+    "assignedBy": {
+      "id": 2,
+      "name": "Jane Admin",
+      "email": "jane@example.com"
+    },
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z"
+  },
+  "message": "Task created successfully. Email notification sent."
+}
+```
+
+### 4. Update Task
+**PUT** `/tasks/{id}`
+
+**Headers:**
+```
+Authorization: Bearer {token}
+```
+
+**Admin Request Body (Full Update):**
+```json
+{
+  "title": "Updated Task Title",
+  "description": "Updated description",
+  "status": "in_progress",
+  "deadline": "2025-01-25T23:59:59Z",
+  "assigned_to": 2
+}
+```
+
+**Guest Request Body (Status Only):**
+```json
+{
+  "status": "completed"
+}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": {
+    "id": 1,
+    "title": "Updated Task Title",
+    "description": "Updated description",
+    "status": "in_progress",
+    "deadline": "2025-01-25T23:59:59Z",
+    "assigned_to": 2,
+    "assigned_by": 2,
+    "user": {
+      "id": 2,
+      "name": "Another User",
+      "email": "another@example.com"
+    },
+    "assignedBy": {
+      "id": 2,
+      "name": "Jane Admin",
+      "email": "jane@example.com"
+    },
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T12:00:00Z"
+  },
+  "message": "Task updated successfully"
+}
+```
+
+### 5. Delete Task (Admin Only)
+**DELETE** `/tasks/{id}`
+
+**Headers:**
+```
+Authorization: Bearer {admin_token}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": "",
+  "message": "Task deleted successfully"
+}
+```
+
+---
+
+## Real-time Features & Innovations
+
+### 1. Live Task Updates
+**WebSocket Connection** (Optional Enhancement)
+```javascript
+// Frontend implementation for real-time updates
+const socket = new WebSocket('ws://localhost:8000/ws');
+
+socket.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  if (data.type === 'task_updated') {
+    // Update task in store
+    tasksStore.updateTaskInStore(data.task);
+  }
+};
+```
+
+### 2. Smart Notifications
+**GET** `/notifications/unread`
+
+**Headers:**
+```
+Authorization: Bearer {token}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": [
+    {
+      "id": 1,
+      "type": "task_assigned",
+      "title": "New Task Assigned",
+      "message": "You have been assigned a new task: Complete Project Setup",
+      "read": false,
+      "created_at": "2025-01-01T00:00:00Z"
+    }
+  ],
+  "message": "Unread notifications retrieved"
+}
+```
+
+### 3. Task Analytics (Admin)
+**GET** `/analytics/tasks`
+
+**Headers:**
+```
+Authorization: Bearer {admin_token}
+```
+
+**Success Response (200):**
+```json
+{
+  "result_code": 1,
+  "data": {
+    "total_tasks": 150,
+    "completed_tasks": 120,
+    "pending_tasks": 20,
+    "in_progress_tasks": 10,
+    "completion_rate": 80,
+    "average_completion_time": "3.5 days",
+    "most_productive_user": {
+      "id": 1,
+      "name": "John Doe",
+      "completed_tasks": 45
+    },
+    "task_trends": [
+      {"date": "2025-01-01", "completed": 5, "created": 8},
+      {"date": "2025-01-02", "completed": 7, "created": 6}
+    ]
+  },
+  "message": "Analytics retrieved successfully"
+}
+```
+
+### 4. Bulk Operations (Admin)
+**POST** `/tasks/bulk-assign`
+
+**Headers:**
+```
+Authorization: Bearer {admin_token}
+```
+
+**Request Body:**
+```json
+{
+  "user_id": 1,
+  "tasks": [
+    {
+      "title": "Task 1",
+      "description": "Description 1",
+      "deadline": "2025-01-20T23:59:59Z"
+    },
+    {
+      "title": "Task 2",
+      "description": "Description 2",
+      "deadline": "2025-01-22T23:59:59Z"
+    }
+  ]
+}
+```
+
+**Success Response (201):**
+```json
+{
+  "result_code": 1,
+  "data": {
+    "created_tasks": 2,
+    "tasks": [
+      {
+        "id": 10,
+        "title": "Task 1",
+        "status": "pending",
+        "assigned_to": 1
+      },
+      {
+        "id": 11,
+        "title": "Task 2",
+        "status": "pending",
+        "assigned_to": 1
+      }
+    ]
+  },
+  "message": "2 tasks created and assigned successfully"
+}
+```
+
+---
+
+## Email Notification System
+
+### Task Assignment Email Template
+When a new task is assigned, an email is automatically sent with:
+
+**Subject:** "New Task Assigned: {Task Title}"
+
+**HTML Template:**
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .email-container { max-width: 600px; margin: 0 auto; font-family: 'Segoe UI', sans-serif; }
+        .header { background: #0078d4; color: white; padding: 20px; text-align: center; }
+        .content { padding: 30px; background: #f9f9f9; }
+        .task-card { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .btn { background: #0078d4; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>📋 TaskFlow</h1>
+            <h2>New Task Assigned</h2>
+        </div>
+        <div class="content">
+            <p>Hello {{user_name}},</p>
+            <p>You have been assigned a new task by {{admin_name}}:</p>
+            
+            <div class="task-card">
+                <h3>{{task_title}}</h3>
+                <p>{{task_description}}</p>
+                <p><strong>Deadline:</strong> {{deadline}}</p>
+                <p><strong>Priority:</strong> {{priority}}</p>
+            </div>
+            
+            <p>Click the button below to view your task:</p>
+            <a href="{{app_url}}/tasks" class="btn">View Task</a>
+            
+            <p>Best regards,<br>TaskFlow Team</p>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+### Email Configuration (Laravel)
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=your_email@gmail.com
+MAIL_PASSWORD=your_app_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=noreply@taskflow.com
+MAIL_FROM_NAME="TaskFlow"
+```
+
+---
+
+## Database Schema
+
+### Users Table
+```sql
+CREATE TABLE users (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  email_verified_at TIMESTAMP NULL,
+  password VARCHAR(255) NOT NULL,
+  role ENUM('admin', 'guest') DEFAULT 'guest',
+  avatar VARCHAR(255) NULL,
+  last_login_at TIMESTAMP NULL,
+  is_active BOOLEAN DEFAULT TRUE,
+  remember_token VARCHAR(100) NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  
+  INDEX idx_email (email),
+  INDEX idx_role (role),
+  INDEX idx_active (is_active)
+);
+```
+
+### Tasks Table
+```sql
+CREATE TABLE tasks (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  status ENUM('pending', 'in_progress', 'completed') DEFAULT 'pending',
+  priority ENUM('low', 'medium', 'high') DEFAULT 'medium',
+  deadline DATETIME NOT NULL,
+  assigned_to BIGINT UNSIGNED NOT NULL,
+  assigned_by BIGINT UNSIGNED NOT NULL,
+  completed_at TIMESTAMP NULL,
+  estimated_hours DECIMAL(5,2) NULL,
+  actual_hours DECIMAL(5,2) NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  
+  FOREIGN KEY (assigned_to) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (assigned_by) REFERENCES users(id) ON DELETE CASCADE,
+  
+  INDEX idx_status (status),
+  INDEX idx_assigned_to (assigned_to),
+  INDEX idx_assigned_by (assigned_by),
+  INDEX idx_deadline (deadline),
+  INDEX idx_priority (priority)
+);
+```
+
+### Task Comments Table (Enhancement)
+```sql
+CREATE TABLE task_comments (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  task_id BIGINT UNSIGNED NOT NULL,
+  user_id BIGINT UNSIGNED NOT NULL,
+  comment TEXT NOT NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  
+  FOREIGN KEY (task_id) REFERENCES tasks(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  
+  INDEX idx_task_id (task_id),
+  INDEX idx_user_id (user_id)
+);
+```
+
+### Notifications Table
+```sql
+CREATE TABLE notifications (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT UNSIGNED NOT NULL,
+  type VARCHAR(50) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  message TEXT NOT NULL,
+  data JSON NULL,
+  read_at TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  
+  INDEX idx_user_id (user_id),
+  INDEX idx_type (type),
+  INDEX idx_read_at (read_at)
+);
+```
+
+### Password Reset Tokens Table
+```sql
+CREATE TABLE password_reset_tokens (
+  email VARCHAR(255) PRIMARY KEY,
+  token VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NULL,
+  
+  INDEX idx_token (token)
+);
+```
+
+---
+
+## Advanced Features & Middleware
+
+### Role-Based Access Control
+```php
+// Admin Middleware
+class AdminMiddleware {
+    public function handle($request, Closure $next) {
+        if (!auth()->check() || auth()->user()->role !== 'admin') {
+            return response()->json([
+                'result_code' => 0,
+                'data' => '',
+                'message' => 'Unauthorized. Admin access required.'
+            ], 403);
+        }
+        return $next($request);
+    }
+}
+
+// Task Owner Middleware
+class TaskOwnerMiddleware {
+    public function handle($request, Closure $next) {
+        $task = Task::find($request->route('id'));
+        if (!$task || ($task->assigned_to !== auth()->id() && auth()->user()->role !== 'admin')) {
+            return response()->json([
+                'result_code' => 0,
+                'data' => '',
+                'message' => 'Unauthorized. You can only access your own tasks.'
+            ], 403);
+        }
+        return $next($request);
+    }
+}
+```
+
+### Validation Rules
+```php
+// Task Creation Validation
+$rules = [
+    'title' => 'required|string|max:255',
+    'description' => 'required|string|max:5000',
+    'deadline' => 'required|date|after:now',
+    'assigned_to' => 'required|exists:users,id',
+    'priority' => 'sometimes|in:low,medium,high'
+];
+
+// User Creation Validation
+$rules = [
+    'name' => 'required|string|max:255',
+    'email' => 'required|email|unique:users,email',
+    'password' => 'required|string|min:8|confirmed',
+    'role' => 'required|in:admin,guest'
+];
+
+// Task Status Update Validation (Guest)
+$rules = [
+    'status' => 'required|in:pending,in_progress,completed'
+];
+```
+
+### API Rate Limiting
+- Authentication endpoints: 5 requests per minute
+- General API endpoints: 60 requests per minute per user
+- Admin endpoints: 100 requests per minute
+- Bulk operations: 10 requests per minute
+
+### Security Features
+- JWT token authentication using Laravel Sanctum
+- Password hashing using bcrypt with cost factor 12
+- CSRF protection for state-changing operations
+- Input validation and sanitization
+- SQL injection prevention through Eloquent ORM
+- XSS protection with output escaping
+- Rate limiting to prevent abuse
+- Secure password reset with time-limited tokens
+
+### Performance Optimizations
+- Database indexing on frequently queried columns
+- Eager loading for relationships to prevent N+1 queries
+- Response caching for static data
+- Database query optimization
+- Pagination for large datasets
+
+---
+
+## Development & Deployment
+
+### Environment Variables
+```env
+# Application
+APP_NAME="TaskFlow"
+APP_ENV=production
+APP_KEY=base64:generated_key_here
+APP_DEBUG=false
+APP_URL=https://your-domain.com
+
+# Database
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=taskflow_db
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
+# Authentication
+SANCTUM_STATEFUL_DOMAINS=your-frontend-domain.com
+SESSION_LIFETIME=120
+
+# Email
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=your_email@gmail.com
+MAIL_PASSWORD=your_app_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=noreply@taskflow.com
+MAIL_FROM_NAME="TaskFlow"
+
+# Queue (for background jobs)
+QUEUE_CONNECTION=database
+```
+
+### Database Seeders
+```php
+// Default Admin User
+User::create([
+    'name' => 'System Administrator',
+    'email' => 'admin@taskflow.com',
+    'password' => Hash::make('admin123'),
+    'role' => 'admin',
+    'email_verified_at' => now()
+]);
+
+// Sample Guest Users
+User::factory(10)->create(['role' => 'guest']);
+
+// Sample Tasks
+Task::factory(50)->create();
+```
+
+### API Testing Examples
+```bash
+# Login
+curl -X POST "http://localhost:8000/api/auth/login" \
+  -H "Content-Type: application/json" \
+  -d '{"email":"admin@taskflow.com","password":"admin123"}'
+
+# Get all tasks (Admin)
+curl -X GET "http://localhost:8000/api/tasks" \
+  -H "Authorization: Bearer your_token_here" \
+  -H "Accept: application/json"
+
+# Create task (Admin)
+curl -X POST "http://localhost:8000/api/tasks" \
+  -H "Authorization: Bearer your_token_here" \
+  -H "Content-Type: application/json" \
+  -d '{"title":"New Task","description":"Task description","deadline":"2025-02-01T23:59:59Z","assigned_to":1}'
+
+# Update task status (Guest)
+curl -X PUT "http://localhost:8000/api/tasks/1" \
+  -H "Authorization: Bearer your_token_here" \
+  -H "Content-Type: application/json" \
+  -d '{"status":"completed"}'
+```
+
+---
+
+## Error Codes & Messages
+
+### Common Error Responses
+```json
+// Validation Error
+{
+  "result_code": 0,
+  "data": {
+    "email": ["The email field is required."],
+    "password": ["The password must be at least 8 characters."]
+  },
+  "message": "Validation failed"
+}
+
+// Authentication Error
+{
+  "result_code": 0,
+  "data": "",
+  "message": "Unauthenticated. Please log in."
+}
+
+// Authorization Error
+{
+  "result_code": 0,
+  "data": "",
+  "message": "Unauthorized. You don't have permission to perform this action."
+}
+
+// Resource Not Found
+{
+  "result_code": 0,
+  "data": "",
+  "message": "Task not found"
+}
+
+// Server Error
+{
+  "result_code": 0,
+  "data": "",
+  "message": "An unexpected error occurred. Please try again later."
+}
+```
+
+This comprehensive API documentation covers all endpoints, security measures, database schema, and advanced features for the TaskFlow management system. The frontend is designed to consume these APIs with proper error handling, loading states, and real-time updates.

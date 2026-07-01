@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>House Hunting Export Template - Domia Ventures</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Calibri', 'Arial', sans-serif; font-size: 11pt; background: #fff; color: #1a1a1a; }
+  .brand-banner { background: #253745; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .brand-logo { display: flex; align-items: center; gap: 10px; }
+  .brand-logo-icon { width: 36px; height: 36px; border-radius: 8px; background: #F25022; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 16px; }
+  .brand-logo-text { color: #fff; font-size: 16px; font-weight: 700; }
+  .brand-logo-sub { color: rgba(255,255,255,0.55); font-size: 10px; margin-top: 1px; }
+  .brand-meta { text-align: right; color: rgba(255,255,255,0.7); font-size: 10px; line-height: 1.6; }
+  .brand-meta strong { color: #F25022; }
+  .report-header { background: #f8fafb; border-bottom: 3px solid #F25022; padding: 16px 24px; display: flex; align-items: flex-start; justify-content: space-between; }
+  .report-title { font-size: 18px; font-weight: 700; color: #253745; }
+  .report-subtitle { font-size: 11px; color: #6c757d; margin-top: 2px; }
+  .report-badges { display: flex; gap: 8px; margin-top: 6px; }
+  .badge { padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; background: rgba(242,80,34,0.1); color: #F25022; }
+  .badge.green { background: rgba(33,115,70,0.1); color: #217346; }
+  .report-info { text-align: right; font-size: 10px; color: #6c757d; line-height: 1.8; }
+  .report-info strong { color: #253745; }
+  .excel-wrapper { padding: 20px 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+  thead tr.col-header th { background: #217346; color: #fff; font-weight: 700; padding: 8px 10px; text-align: left; border: 1px solid #1a5c38; white-space: nowrap; }
+  tbody tr td { padding: 7px 10px; border: 1px solid #dde3ea; color: #1a2a36; vertical-align: middle; }
+  tbody tr:nth-child(even) td { background: #f0faf5; }
+  tbody tr:nth-child(odd) td { background: #ffffff; }
+  .cell-matched { color: #16a34a; font-weight: 600; }
+  .cell-pending { color: #d97706; font-weight: 600; }
+  .cell-searching { color: #0d9488; font-weight: 600; }
+  .cell-num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.row-num { background: #f4f6f8 !important; color: #9aa5b4; text-align: center; font-size: 9pt; width: 32px; border-right: 2px solid #dde3ea; }
+  th.row-num-head { background: #1a5c38 !important; width: 32px; text-align: center; }
+  tfoot tr td { background: #253745 !important; color: #fff !important; font-weight: 700; padding: 8px 10px; border: 1px solid #3d5a73; }
+  .excel-footer { margin: 0 24px; padding: 12px 0; border-top: 2px solid #F25022; display: flex; justify-content: space-between; align-items: center; font-size: 9pt; color: #9aa5b4; }
+  .excel-footer .footer-brand { color: #F25022; font-weight: 700; }
+  @media print { .brand-banner, thead tr th, tfoot tr td { -webkit-print-color-adjust: exact; print-color-adjust: exact; } @page { margin: 10mm; size: A4 landscape; } }
+</style>
+</head>
+<body>
+
+<div class="brand-banner">
+  <div class="brand-logo">
+    <div class="brand-logo-icon">D</div>
+    <div>
+      <div class="brand-logo-text">Domia Ventures LTD</div>
+      <div class="brand-logo-sub">Property Management System</div>
+    </div>
+  </div>
+  <div class="brand-meta">
+    <div><strong>Export Date:</strong> 24 Jun 2026</div>
+    <div><strong>Template:</strong> House Hunting Requests</div>
+    <div><strong>Format:</strong> Excel (.xlsx)</div>
+  </div>
+</div>
+
+<div class="report-header">
+  <div>
+    <div class="report-title">House Hunting Requests Register</div>
+    <div class="report-subtitle">Client requirements, property matches and tour schedules</div>
+    <div class="report-badges">
+      <span class="badge green">Excel Template</span>
+      <span class="badge">House Hunting</span>
+    </div>
+  </div>
+  <div class="report-info">
+    <div><strong>Total Requests:</strong> 63</div>
+    <div><strong>Matched:</strong> 38</div>
+    <div><strong>Searching:</strong> 18</div>
+    <div><strong>Pending:</strong> 7</div>
+  </div>
+</div>
+
+<div class="excel-wrapper">
+  <table>
+    <thead>
+      <tr class="col-header">
+        <th class="row-num-head">#</th>
+        <th>Request ID</th>
+        <th>Client Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Preferred Area</th>
+        <th>Unit Type</th>
+        <th>Budget Min (Ksh)</th>
+        <th>Budget Max (Ksh)</th>
+        <th>Move-In Date</th>
+        <th>Matched Property</th>
+        <th>Matched Unit</th>
+        <th>Tour Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="row-num">1</td>
+        <td>HH-2026-001</td><td>Angela Mwathi</td><td>angela.m@email.com</td>
+        <td>+254 710 201 001</td><td>Westlands</td><td>2 Bedroom</td>
+        <td class="cell-num">80,000</td><td class="cell-num">120,000</td>
+        <td>01 Jul 2026</td><td>Westlands Heights</td><td>B-204</td>
+        <td>26 Jun 2026</td><td class="cell-matched">Matched</td>
+      </tr>
+      <tr>
+        <td class="row-num">2</td>
+        <td>HH-2026-002</td><td>Bernard Onyango</td><td>b.onyango@email.com</td>
+        <td>+254 710 202 002</td><td>Kilimani</td><td>3 Bedroom</td>
+        <td class="cell-num">150,000</td><td class="cell-num">200,000</td>
+        <td>15 Jul 2026</td><td>&mdash;</td><td>&mdash;</td>
+        <td>&mdash;</td><td class="cell-searching">Searching</td>
+      </tr>
+      <tr>
+        <td class="row-num">3</td>
+        <td>HH-2026-003</td><td>Christine Aoko</td><td>c.aoko@email.com</td>
+        <td>+254 710 203 003</td><td>Parklands</td><td>Studio</td>
+        <td class="cell-num">40,000</td><td class="cell-num">60,000</td>
+        <td>01 Jul 2026</td><td>Parklands Court</td><td>F-101</td>
+        <td>25 Jun 2026</td><td class="cell-matched">Matched</td>
+      </tr>
+      <tr>
+        <td class="row-num">4</td>
+        <td>HH-2026-004</td><td>Dennis Mwangi</td><td>d.mwangi@email.com</td>
+        <td>+254 710 204 004</td><td>Nairobi CBD</td><td>Commercial Office</td>
+        <td class="cell-num">200,000</td><td class="cell-num">350,000</td>
+        <td>01 Aug 2026</td><td>&mdash;</td><td>&mdash;</td>
+        <td>&mdash;</td><td class="cell-pending">Pending</td>
+      </tr>
+      <tr>
+        <td class="row-num">5</td>
+        <td>HH-2026-005</td><td>Elizabeth Wahu</td><td>e.wahu@email.com</td>
+        <td>+254 710 205 005</td><td>Kiambu</td><td>1 Bedroom</td>
+        <td class="cell-num">55,000</td><td class="cell-num">80,000</td>
+        <td>15 Jul 2026</td><td>Green Valley Apts</td><td>A-305</td>
+        <td>27 Jun 2026</td><td class="cell-matched">Matched</td>
+      </tr>
+      <tr>
+        <td class="row-num">6</td>
+        <td>HH-2026-006</td><td>Francis Baraka</td><td>f.baraka@email.com</td>
+        <td>+254 710 206 006</td><td>Lavington</td><td>4 Bedroom</td>
+        <td class="cell-num">300,000</td><td class="cell-num">500,000</td>
+        <td>01 Sep 2026</td><td>&mdash;</td><td>&mdash;</td>
+        <td>&mdash;</td><td class="cell-searching">Searching</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="row-num"></td>
+        <td colspan="12"><strong>TOTAL ACTIVE REQUESTS: 63 &nbsp;|&nbsp; Matched: 38 &nbsp;|&nbsp; In Progress: 25</strong></td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<div class="excel-footer">
+  <div><span class="footer-brand">Domia Ventures LTD</span> &mdash; Property Management System &copy; 2026</div>
+  <div style="font-style:italic;">CONFIDENTIAL &mdash; For internal use only.</div>
+  <div>Page 1 of 1</div>
+</div>
+
+</body>
+</html>

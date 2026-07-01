@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bookings Report - Domia Ventures LTD</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Arial', sans-serif; font-size: 10pt; background: #fff; color: #1a2a36; }
+  .page { width: 210mm; margin: 0 auto; background: #fff; box-shadow: 0 0 30px rgba(0,0,0,0.15); }
+  @media screen { .page { margin: 20px auto; min-height: 297mm; } }
+  @media print { .page { box-shadow: none; width: 100%; } @page { size: A4 landscape; margin: 0; } }
+  .pdf-header { background: #253745; padding: 0; display: flex; align-items: stretch; min-height: 80px; }
+  .pdf-header-accent { width: 8px; background: #F25022; flex-shrink: 0; }
+  .pdf-header-content { flex: 1; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .pdf-logo-row { display: flex; align-items: center; gap: 12px; }
+  .pdf-logo-icon { width: 44px; height: 44px; border-radius: 10px; background: #F25022; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 20px; }
+  .pdf-company-name { color: #fff; font-size: 17px; font-weight: 700; }
+  .pdf-company-sub { color: rgba(255,255,255,0.5); font-size: 9px; margin-top: 3px; text-transform: uppercase; }
+  .pdf-header-right { text-align: right; }
+  .pdf-doc-type { color: #F25022; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+  .pdf-doc-meta { color: rgba(255,255,255,0.6); font-size: 9px; line-height: 1.7; margin-top: 4px; }
+  .pdf-title-band { background: #f8fafb; border-bottom: 2px solid #F25022; padding: 16px 24px 12px; display: flex; align-items: flex-end; justify-content: space-between; }
+  .pdf-report-title { font-size: 20px; font-weight: 800; color: #253745; }
+  .pdf-report-subtitle { font-size: 10px; color: #6c757d; margin-top: 3px; }
+  .pdf-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; background: rgba(242,80,34,0.1); color: #F25022; font-size: 9px; font-weight: 700; text-transform: uppercase; }
+  .kpi-row { display: flex; gap: 0; border-bottom: 1px solid #dde3ea; }
+  .kpi-box { flex: 1; padding: 14px 16px; border-right: 1px solid #dde3ea; text-align: center; }
+  .kpi-box:last-child { border-right: none; }
+  .kpi-value { font-size: 20px; font-weight: 800; color: #253745; }
+  .kpi-value.green { color: #16a34a; }
+  .kpi-value.orange { color: #F25022; }
+  .kpi-value.amber { color: #d97706; }
+  .kpi-label { font-size: 9px; color: #9aa5b4; text-transform: uppercase; margin-top: 2px; }
+  .pdf-table-wrap { padding: 20px 24px; }
+  .pdf-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #253745; border-left: 3px solid #F25022; padding-left: 8px; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  thead th { background: #253745; color: #fff; padding: 8px 8px; text-align: left; font-size: 8pt; font-weight: 700; border: 1px solid #3d5a73; }
+  thead th:first-child { border-left: 3px solid #F25022; }
+  tbody tr:nth-child(even) td { background: #f8fafb; }
+  tbody td { padding: 6px 8px; border: 1px solid #eaecef; vertical-align: middle; }
+  .cell-confirmed { color: #16a34a; font-weight: 600; }
+  .cell-pending { color: #d97706; font-weight: 600; }
+  .cell-cancelled { color: #dc2626; }
+  .cell-checkedin { color: #0d9488; font-weight: 600; }
+  .cell-num { text-align: right; }
+  .row-num { width: 24px; text-align: center; color: #9aa5b4; font-size: 8pt; }
+  .pdf-footer { margin: 20px 24px 0; padding: 12px 0; border-top: 1px solid #dde3ea; display: flex; justify-content: space-between; align-items: center; font-size: 8pt; color: #9aa5b4; }
+  .pdf-footer .brand { color: #F25022; font-weight: 700; }
+  .pdf-footer-bottom { background: #253745; padding: 8px 24px; display: flex; justify-content: space-between; font-size: 8pt; color: rgba(255,255,255,0.5); }
+  @media print { .pdf-header, thead th, .pdf-footer-bottom { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="pdf-header">
+    <div class="pdf-header-accent"></div>
+    <div class="pdf-header-content">
+      <div class="pdf-logo-row">
+        <div class="pdf-logo-icon">D</div>
+        <div><div class="pdf-company-name">Domia Ventures LTD</div><div class="pdf-company-sub">Property Management System</div></div>
+      </div>
+      <div class="pdf-header-right">
+        <div class="pdf-doc-type">Official Report</div>
+        <div class="pdf-doc-meta">Date: 24 June 2026<br>Prepared by: System Admin<br>Report Ref: RPT-BNB-2026-06</div>
+      </div>
+    </div>
+  </div>
+  <div class="pdf-title-band">
+    <div>
+      <div class="pdf-report-title">BnB Bookings Report</div>
+      <div class="pdf-report-subtitle">Short-stay guest bookings, revenue and occupancy summary — June 2026</div>
+    </div>
+    <span class="pdf-badge">PDF Report</span>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-box"><div class="kpi-value">284</div><div class="kpi-label">Total Bookings</div></div>
+    <div class="kpi-box"><div class="kpi-value green">47</div><div class="kpi-label">This Month</div></div>
+    <div class="kpi-box"><div class="kpi-value orange">Ksh 2.4M</div><div class="kpi-label">Jun Revenue</div></div>
+    <div class="kpi-box"><div class="kpi-value amber">12</div><div class="kpi-label">Upcoming</div></div>
+    <div class="kpi-box"><div class="kpi-value green">78%</div><div class="kpi-label">Avg Occupancy</div></div>
+  </div>
+  <div class="pdf-table-wrap">
+    <div class="pdf-section-title">Booking Details</div>
+    <table>
+      <thead>
+        <tr>
+          <th class="row-num">#</th>
+          <th>Booking ID</th><th>Guest Name</th><th>Unit</th><th>Property</th>
+          <th>Check-In</th><th>Check-Out</th><th>Nights</th><th>Total (Ksh)</th><th>Payment</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-num">1</td><td>BNB-2026-001</td><td>Victor Osei</td><td>Room 12</td><td>Westlands Heights</td><td>20 Jun 2026</td><td>24 Jun 2026</td><td class="cell-num">4</td><td class="cell-num">34,000</td><td class="cell-confirmed">Paid</td><td class="cell-checkedin">Checked In</td></tr>
+        <tr><td class="row-num">2</td><td>BNB-2026-002</td><td>Amina Hassan</td><td>Penthouse 1</td><td>Lavington Court</td><td>25 Jun 2026</td><td>28 Jun 2026</td><td class="cell-num">3</td><td class="cell-num">75,000</td><td class="cell-confirmed">Paid</td><td class="cell-confirmed">Confirmed</td></tr>
+        <tr><td class="row-num">3</td><td>BNB-2026-003</td><td>John Kariuki</td><td>Room 5</td><td>Parklands Court</td><td>22 Jun 2026</td><td>23 Jun 2026</td><td class="cell-num">1</td><td class="cell-num">6,000</td><td class="cell-pending">Partial</td><td class="cell-confirmed">Confirmed</td></tr>
+        <tr><td class="row-num">4</td><td>BNB-2026-004</td><td>Fatuma Said</td><td>Room 8</td><td>Green Valley Apts</td><td>01 Jul 2026</td><td>05 Jul 2026</td><td class="cell-num">4</td><td class="cell-num">30,000</td><td class="cell-pending">Pending</td><td class="cell-pending">Upcoming</td></tr>
+        <tr><td class="row-num">5</td><td>BNB-2026-005</td><td>Robert Ndung'u</td><td>Suite 3</td><td>Downtown Plaza</td><td>15 Jun 2026</td><td>19 Jun 2026</td><td class="cell-num">4</td><td class="cell-num">48,000</td><td class="cell-confirmed">Paid</td><td style="color:#9aa5b4;">Checked Out</td></tr>
+        <tr><td class="row-num">6</td><td>BNB-2026-006</td><td>Lucy Wangari</td><td>Room 15</td><td>Kilimani Gardens</td><td>10 Jun 2026</td><td>12 Jun 2026</td><td class="cell-num">2</td><td class="cell-num">11,000</td><td class="cell-cancelled">Refunded</td><td class="cell-cancelled">Cancelled</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pdf-footer">
+    <div><span class="brand">Domia Ventures LTD</span> &mdash; Property Management System</div>
+    <div style="font-style:italic;">CONFIDENTIAL</div>
+    <div>Page 1 of 1</div>
+  </div>
+  <div class="pdf-footer-bottom">
+    <div>Generated: 24 June 2026 at 09:00 EAT</div>
+    <div>Ref: RPT-BNB-2026-06 &nbsp;|&nbsp; &copy; 2026 Domia Ventures LTD</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Expenses Report - Domia Ventures LTD</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Arial', sans-serif; font-size: 10pt; background: #fff; color: #1a2a36; }
+  .page { width: 210mm; margin: 0 auto; background: #fff; box-shadow: 0 0 30px rgba(0,0,0,0.15); }
+  @media screen { .page { margin: 20px auto; min-height: 297mm; } }
+  @media print { .page { box-shadow: none; width: 100%; } @page { size: A4 landscape; margin: 0; } }
+  .pdf-header { background: #253745; display: flex; align-items: stretch; min-height: 80px; }
+  .pdf-header-accent { width: 8px; background: #F25022; flex-shrink: 0; }
+  .pdf-header-content { flex: 1; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .pdf-logo-row { display: flex; align-items: center; gap: 12px; }
+  .pdf-logo-icon { width: 44px; height: 44px; border-radius: 10px; background: #F25022; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 20px; }
+  .pdf-company-name { color: #fff; font-size: 17px; font-weight: 700; }
+  .pdf-company-sub { color: rgba(255,255,255,0.5); font-size: 9px; margin-top: 3px; text-transform: uppercase; }
+  .pdf-doc-type { color: #F25022; font-size: 10px; font-weight: 700; text-transform: uppercase; text-align: right; }
+  .pdf-doc-meta { color: rgba(255,255,255,0.6); font-size: 9px; line-height: 1.7; margin-top: 4px; text-align: right; }
+  .pdf-title-band { background: #f8fafb; border-bottom: 2px solid #F25022; padding: 16px 24px 12px; display: flex; align-items: flex-end; justify-content: space-between; }
+  .pdf-report-title { font-size: 20px; font-weight: 800; color: #253745; }
+  .pdf-report-subtitle { font-size: 10px; color: #6c757d; margin-top: 3px; }
+  .pdf-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; background: rgba(242,80,34,0.1); color: #F25022; font-size: 9px; font-weight: 700; text-transform: uppercase; }
+  .kpi-row { display: flex; gap: 0; border-bottom: 1px solid #dde3ea; }
+  .kpi-box { flex: 1; padding: 14px 16px; border-right: 1px solid #dde3ea; text-align: center; }
+  .kpi-box:last-child { border-right: none; }
+  .kpi-value { font-size: 18px; font-weight: 800; color: #253745; }
+  .kpi-value.green { color: #16a34a; }
+  .kpi-value.orange { color: #F25022; }
+  .kpi-value.amber { color: #d97706; }
+  .kpi-label { font-size: 9px; color: #9aa5b4; text-transform: uppercase; margin-top: 2px; }
+  .pdf-table-wrap { padding: 20px 24px; }
+  .pdf-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #253745; border-left: 3px solid #F25022; padding-left: 8px; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  thead th { background: #253745; color: #fff; padding: 8px 8px; text-align: left; font-size: 8pt; font-weight: 700; border: 1px solid #3d5a73; }
+  thead th:first-child { border-left: 3px solid #F25022; }
+  tbody tr:nth-child(even) td { background: #f8fafb; }
+  tbody td { padding: 6px 8px; border: 1px solid #eaecef; vertical-align: middle; }
+  .cell-approved { color: #16a34a; font-weight: 600; }
+  .cell-pending { color: #d97706; font-weight: 600; }
+  .cell-num { text-align: right; }
+  .row-num { width: 24px; text-align: center; color: #9aa5b4; font-size: 8pt; }
+  .pdf-footer { margin: 20px 24px 0; padding: 12px 0; border-top: 1px solid #dde3ea; display: flex; justify-content: space-between; align-items: center; font-size: 8pt; color: #9aa5b4; }
+  .pdf-footer .brand { color: #F25022; font-weight: 700; }
+  .pdf-footer-bottom { background: #253745; padding: 8px 24px; display: flex; justify-content: space-between; font-size: 8pt; color: rgba(255,255,255,0.5); }
+  @media print { .pdf-header, thead th, .pdf-footer-bottom { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="pdf-header">
+    <div class="pdf-header-accent"></div>
+    <div class="pdf-header-content">
+      <div class="pdf-logo-row">
+        <div class="pdf-logo-icon">D</div>
+        <div><div class="pdf-company-name">Domia Ventures LTD</div><div class="pdf-company-sub">Property Management System</div></div>
+      </div>
+      <div>
+        <div class="pdf-doc-type">Financial Report</div>
+        <div class="pdf-doc-meta">Date: 24 June 2026<br>Prepared by: Finance Dept<br>Report Ref: RPT-EXP-2026-06</div>
+      </div>
+    </div>
+  </div>
+  <div class="pdf-title-band">
+    <div>
+      <div class="pdf-report-title">Expenses Report</div>
+      <div class="pdf-report-subtitle">Operational expenses by category, property and vendor — June 2026</div>
+    </div>
+    <span class="pdf-badge">PDF Report</span>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-box"><div class="kpi-value">312</div><div class="kpi-label">Total Expenses</div></div>
+    <div class="kpi-box"><div class="kpi-value orange">Ksh 3.98M</div><div class="kpi-label">Jun Total</div></div>
+    <div class="kpi-box"><div class="kpi-value green">Ksh 3.61M</div><div class="kpi-label">Approved</div></div>
+    <div class="kpi-box"><div class="kpi-value amber">Ksh 370K</div><div class="kpi-label">Pending</div></div>
+    <div class="kpi-box"><div class="kpi-value">14</div><div class="kpi-label">Awaiting Approval</div></div>
+  </div>
+  <div class="pdf-table-wrap">
+    <div class="pdf-section-title">Expense Records — June 2026</div>
+    <table>
+      <thead>
+        <tr>
+          <th class="row-num">#</th>
+          <th>Expense ID</th><th>Date</th><th>Category</th><th>Description</th>
+          <th>Property</th><th>Vendor</th><th>Amount (Ksh)</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-num">1</td><td>EXP-2026-001</td><td>02 Jun 2026</td><td>Maintenance</td><td>Plumbing repair</td><td>Green Valley</td><td>Rapid Plumbers</td><td class="cell-num">45,000</td><td class="cell-approved">Approved</td></tr>
+        <tr><td class="row-num">2</td><td>EXP-2026-002</td><td>05 Jun 2026</td><td>Utilities</td><td>Common area electricity</td><td>Downtown Plaza</td><td>Kenya Power</td><td class="cell-num">128,400</td><td class="cell-approved">Approved</td></tr>
+        <tr><td class="row-num">3</td><td>EXP-2026-003</td><td>08 Jun 2026</td><td>Landscaping</td><td>Garden maintenance</td><td>Kilimani Gardens</td><td>Green Thumb Ltd</td><td class="cell-num">28,000</td><td class="cell-approved">Approved</td></tr>
+        <tr><td class="row-num">4</td><td>EXP-2026-004</td><td>10 Jun 2026</td><td>Security</td><td>Security services - June</td><td>All Properties</td><td>Shield Security</td><td class="cell-num">215,000</td><td class="cell-approved">Approved</td></tr>
+        <tr><td class="row-num">5</td><td>EXP-2026-005</td><td>12 Jun 2026</td><td>Repairs</td><td>Elevator servicing</td><td>Westlands Heights</td><td>Otis Elevators</td><td class="cell-num">380,000</td><td class="cell-approved">Approved</td></tr>
+        <tr><td class="row-num">6</td><td>EXP-2026-006</td><td>15 Jun 2026</td><td>Cleaning</td><td>Deep cleaning</td><td>Lavington Court</td><td>Sparkle Clean</td><td class="cell-num">52,000</td><td class="cell-pending">Pending</td></tr>
+        <tr><td class="row-num">7</td><td>EXP-2026-007</td><td>18 Jun 2026</td><td>Insurance</td><td>Property insurance Q2</td><td>All Properties</td><td>Jubilee Insurance</td><td class="cell-num">648,000</td><td class="cell-approved">Approved</td></tr>
+        <tr><td class="row-num">8</td><td>EXP-2026-008</td><td>20 Jun 2026</td><td>IT / Software</td><td>PMS subscription</td><td>Head Office</td><td>Domia Tech Ltd</td><td class="cell-num">85,000</td><td class="cell-approved">Approved</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pdf-footer">
+    <div><span class="brand">Domia Ventures LTD</span> &mdash; Finance Department</div>
+    <div style="font-style:italic;">STRICTLY CONFIDENTIAL</div>
+    <div>Page 1 of 1</div>
+  </div>
+  <div class="pdf-footer-bottom">
+    <div>Generated: 24 June 2026 at 09:00 EAT</div>
+    <div>Ref: RPT-EXP-2026-06 &nbsp;|&nbsp; &copy; 2026 Domia Ventures LTD</div>
+  </div>
+</div>
+</body>
+</html>

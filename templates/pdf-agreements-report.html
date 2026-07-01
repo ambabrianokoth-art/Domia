@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Agreements Report - Domia Ventures LTD</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Arial', sans-serif; font-size: 10pt; background: #fff; color: #1a2a36; }
+  .page { width: 210mm; margin: 0 auto; background: #fff; box-shadow: 0 0 30px rgba(0,0,0,0.15); }
+  @media screen { .page { margin: 20px auto; min-height: 297mm; } }
+  @media print { .page { box-shadow: none; width: 100%; } @page { size: A4 landscape; margin: 0; } }
+  .pdf-header { background: #253745; display: flex; align-items: stretch; min-height: 80px; }
+  .pdf-header-accent { width: 8px; background: #F25022; flex-shrink: 0; }
+  .pdf-header-content { flex: 1; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .pdf-logo-row { display: flex; align-items: center; gap: 12px; }
+  .pdf-logo-icon { width: 44px; height: 44px; border-radius: 10px; background: #F25022; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 20px; }
+  .pdf-company-name { color: #fff; font-size: 17px; font-weight: 700; }
+  .pdf-company-sub { color: rgba(255,255,255,0.5); font-size: 9px; margin-top: 3px; text-transform: uppercase; }
+  .pdf-doc-type { color: #F25022; font-size: 10px; font-weight: 700; text-transform: uppercase; text-align: right; }
+  .pdf-doc-meta { color: rgba(255,255,255,0.6); font-size: 9px; line-height: 1.7; margin-top: 4px; text-align: right; }
+  .pdf-title-band { background: #f8fafb; border-bottom: 2px solid #F25022; padding: 16px 24px 12px; display: flex; align-items: flex-end; justify-content: space-between; }
+  .pdf-report-title { font-size: 20px; font-weight: 800; color: #253745; }
+  .pdf-report-subtitle { font-size: 10px; color: #6c757d; margin-top: 3px; }
+  .pdf-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; background: rgba(242,80,34,0.1); color: #F25022; font-size: 9px; font-weight: 700; text-transform: uppercase; }
+  .kpi-row { display: flex; gap: 0; border-bottom: 1px solid #dde3ea; }
+  .kpi-box { flex: 1; padding: 14px 16px; border-right: 1px solid #dde3ea; text-align: center; }
+  .kpi-box:last-child { border-right: none; }
+  .kpi-value { font-size: 20px; font-weight: 800; color: #253745; }
+  .kpi-value.green { color: #16a34a; }
+  .kpi-value.orange { color: #F25022; }
+  .kpi-value.amber { color: #d97706; }
+  .kpi-label { font-size: 9px; color: #9aa5b4; text-transform: uppercase; margin-top: 2px; }
+  .pdf-table-wrap { padding: 20px 24px; }
+  .pdf-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #253745; border-left: 3px solid #F25022; padding-left: 8px; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  thead th { background: #253745; color: #fff; padding: 8px 8px; text-align: left; font-size: 8pt; font-weight: 700; border: 1px solid #3d5a73; }
+  thead th:first-child { border-left: 3px solid #F25022; }
+  tbody tr:nth-child(even) td { background: #f8fafb; }
+  tbody td { padding: 6px 8px; border: 1px solid #eaecef; vertical-align: middle; }
+  .cell-active { color: #16a34a; font-weight: 600; }
+  .cell-expired { color: #9aa5b4; }
+  .cell-expiring { color: #d97706; font-weight: 600; }
+  .cell-num { text-align: right; }
+  .row-num { width: 24px; text-align: center; color: #9aa5b4; font-size: 8pt; }
+  .pdf-footer { margin: 20px 24px 0; padding: 12px 0; border-top: 1px solid #dde3ea; display: flex; justify-content: space-between; align-items: center; font-size: 8pt; color: #9aa5b4; }
+  .pdf-footer .brand { color: #F25022; font-weight: 700; }
+  .pdf-footer-bottom { background: #253745; padding: 8px 24px; display: flex; justify-content: space-between; font-size: 8pt; color: rgba(255,255,255,0.5); }
+  @media print { .pdf-header, thead th, .pdf-footer-bottom { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="pdf-header">
+    <div class="pdf-header-accent"></div>
+    <div class="pdf-header-content">
+      <div class="pdf-logo-row">
+        <div class="pdf-logo-icon">D</div>
+        <div><div class="pdf-company-name">Domia Ventures LTD</div><div class="pdf-company-sub">Property Management System</div></div>
+      </div>
+      <div>
+        <div class="pdf-doc-type">Legal Report</div>
+        <div class="pdf-doc-meta">Date: 24 June 2026<br>Prepared by: System Admin<br>Report Ref: RPT-AGR-2026-06</div>
+      </div>
+    </div>
+  </div>
+  <div class="pdf-title-band">
+    <div>
+      <div class="pdf-report-title">Lease Agreements Report</div>
+      <div class="pdf-report-subtitle">Active and historical lease agreements with rent and deposit summaries</div>
+    </div>
+    <span class="pdf-badge">PDF Report</span>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-box"><div class="kpi-value">892</div><div class="kpi-label">Total Agreements</div></div>
+    <div class="kpi-box"><div class="kpi-value green">847</div><div class="kpi-label">Active</div></div>
+    <div class="kpi-box"><div class="kpi-value amber">34</div><div class="kpi-label">Expiring (30d)</div></div>
+    <div class="kpi-box"><div class="kpi-value orange">Ksh 139.8M</div><div class="kpi-label">Annual Rent Value</div></div>
+    <div class="kpi-box"><div class="kpi-value green">Ksh 280M</div><div class="kpi-label">Total Deposits</div></div>
+  </div>
+  <div class="pdf-table-wrap">
+    <div class="pdf-section-title">Lease Agreement Register</div>
+    <table>
+      <thead>
+        <tr>
+          <th class="row-num">#</th>
+          <th>Agreement No.</th><th>Tenant</th><th>Property</th><th>Unit</th>
+          <th>Type</th><th>Start Date</th><th>End Date</th><th>Monthly Rent</th><th>Deposit</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-num">1</td><td>AGR-2024-001</td><td>Alice Wanjiru Kariuki</td><td>Green Valley Apts</td><td>A-204</td><td>Annual</td><td>01 Jan 2024</td><td>31 Dec 2024</td><td class="cell-num">Ksh 85,000</td><td class="cell-num">Ksh 170,000</td><td class="cell-active">Active</td></tr>
+        <tr><td class="row-num">2</td><td>AGR-2024-002</td><td>Brian Otieno Omollo</td><td>Downtown Plaza</td><td>C-105</td><td>Annual</td><td>15 Feb 2024</td><td>14 Feb 2025</td><td class="cell-num">Ksh 120,000</td><td class="cell-num">Ksh 240,000</td><td class="cell-active">Active</td></tr>
+        <tr><td class="row-num">3</td><td>AGR-2024-003</td><td>Carol Akinyi Odhiambo</td><td>Westlands Heights</td><td>B-301</td><td>Annual</td><td>01 Mar 2024</td><td>28 Feb 2025</td><td class="cell-num">Ksh 145,000</td><td class="cell-num">Ksh 290,000</td><td class="cell-active">Active</td></tr>
+        <tr><td class="row-num">4</td><td>AGR-2024-004</td><td>Daniel Kipchoge Ruto</td><td>Kilimani Gardens</td><td>D-402</td><td>6-Month</td><td>01 Apr 2024</td><td>30 Sep 2024</td><td class="cell-num">Ksh 95,000</td><td class="cell-num">Ksh 190,000</td><td class="cell-expiring">Expiring</td></tr>
+        <tr><td class="row-num">5</td><td>AGR-2024-005</td><td>Esther Njoki Mwangi</td><td>Parklands Court</td><td>E-102</td><td>Month-Month</td><td>15 Apr 2024</td><td>Rolling</td><td class="cell-num">Ksh 65,000</td><td class="cell-num">Ksh 130,000</td><td class="cell-active">Active</td></tr>
+        <tr><td class="row-num">6</td><td>AGR-2023-088</td><td>Francis Waweru Gitau</td><td>Green Valley Apts</td><td>A-108</td><td>Annual</td><td>01 May 2023</td><td>30 Apr 2024</td><td class="cell-num">Ksh 70,000</td><td class="cell-num">Ksh 140,000</td><td class="cell-expired">Expired</td></tr>
+        <tr><td class="row-num">7</td><td>AGR-2024-007</td><td>Gloria Atieno Oloo</td><td>Lavington Court</td><td>F-201</td><td>2-Year</td><td>01 Jun 2024</td><td>31 May 2026</td><td class="cell-num">Ksh 180,000</td><td class="cell-num">Ksh 360,000</td><td class="cell-active">Active</td></tr>
+        <tr><td class="row-num">8</td><td>AGR-2024-008</td><td>Henry Mwenda Kimani</td><td>Downtown Plaza</td><td>C-210</td><td>Commercial</td><td>01 Jul 2024</td><td>30 Jun 2025</td><td class="cell-num">Ksh 250,000</td><td class="cell-num">Ksh 500,000</td><td class="cell-active">Active</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pdf-footer">
+    <div><span class="brand">Domia Ventures LTD</span> &mdash; Legal &amp; Agreements</div>
+    <div style="font-style:italic;">CONFIDENTIAL &mdash; Legally Sensitive</div>
+    <div>Page 1 of 1</div>
+  </div>
+  <div class="pdf-footer-bottom">
+    <div>Generated: 24 June 2026 at 09:00 EAT</div>
+    <div>Ref: RPT-AGR-2026-06 &nbsp;|&nbsp; &copy; 2026 Domia Ventures LTD</div>
+  </div>
+</div>
+</body>
+</html>

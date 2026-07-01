@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Invoices Report - Domia Ventures LTD</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Arial', sans-serif; font-size: 10pt; background: #fff; color: #1a2a36; }
+  .page { width: 210mm; margin: 0 auto; background: #fff; box-shadow: 0 0 30px rgba(0,0,0,0.15); }
+  @media screen { .page { margin: 20px auto; min-height: 297mm; } }
+  @media print { .page { box-shadow: none; width: 100%; } @page { size: A4 landscape; margin: 0; } }
+  .pdf-header { background: #253745; padding: 0; display: flex; align-items: stretch; min-height: 80px; }
+  .pdf-header-accent { width: 8px; background: #F25022; flex-shrink: 0; }
+  .pdf-header-content { flex: 1; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .pdf-logo-row { display: flex; align-items: center; gap: 12px; }
+  .pdf-logo-icon { width: 44px; height: 44px; border-radius: 10px; background: #F25022; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 20px; }
+  .pdf-company-name { color: #fff; font-size: 17px; font-weight: 700; }
+  .pdf-company-sub { color: rgba(255,255,255,0.5); font-size: 9px; margin-top: 3px; text-transform: uppercase; }
+  .pdf-header-right { text-align: right; }
+  .pdf-doc-type { color: #F25022; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+  .pdf-doc-meta { color: rgba(255,255,255,0.6); font-size: 9px; line-height: 1.7; margin-top: 4px; }
+  .pdf-title-band { background: #f8fafb; border-bottom: 2px solid #F25022; padding: 16px 24px 12px; display: flex; align-items: flex-end; justify-content: space-between; }
+  .pdf-report-title { font-size: 20px; font-weight: 800; color: #253745; }
+  .pdf-report-subtitle { font-size: 10px; color: #6c757d; margin-top: 3px; }
+  .pdf-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; background: rgba(242,80,34,0.1); color: #F25022; font-size: 9px; font-weight: 700; text-transform: uppercase; }
+  .kpi-row { display: flex; gap: 0; border-bottom: 1px solid #dde3ea; }
+  .kpi-box { flex: 1; padding: 14px 16px; border-right: 1px solid #dde3ea; text-align: center; }
+  .kpi-box:last-child { border-right: none; }
+  .kpi-value { font-size: 18px; font-weight: 800; color: #253745; }
+  .kpi-value.green { color: #16a34a; }
+  .kpi-value.orange { color: #F25022; }
+  .kpi-value.amber { color: #d97706; }
+  .kpi-label { font-size: 9px; color: #9aa5b4; text-transform: uppercase; margin-top: 2px; }
+  .pdf-table-wrap { padding: 20px 24px; }
+  .pdf-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #253745; border-left: 3px solid #F25022; padding-left: 8px; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  thead th { background: #253745; color: #fff; padding: 8px 8px; text-align: left; font-size: 8pt; font-weight: 700; border: 1px solid #3d5a73; }
+  thead th:first-child { border-left: 3px solid #F25022; }
+  tbody tr:nth-child(even) td { background: #f8fafb; }
+  tbody td { padding: 6px 8px; border: 1px solid #eaecef; vertical-align: middle; }
+  .cell-paid { color: #16a34a; font-weight: 600; }
+  .cell-overdue { color: #dc2626; font-weight: 600; }
+  .cell-partial { color: #d97706; font-weight: 600; }
+  .cell-num { text-align: right; }
+  .row-num { width: 24px; text-align: center; color: #9aa5b4; font-size: 8pt; }
+  .pdf-footer { margin: 20px 24px 0; padding: 12px 0; border-top: 1px solid #dde3ea; display: flex; justify-content: space-between; align-items: center; font-size: 8pt; color: #9aa5b4; }
+  .pdf-footer .brand { color: #F25022; font-weight: 700; }
+  .pdf-footer-bottom { background: #253745; padding: 8px 24px; display: flex; justify-content: space-between; font-size: 8pt; color: rgba(255,255,255,0.5); }
+  @media print { .pdf-header, thead th, .pdf-footer-bottom { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="pdf-header">
+    <div class="pdf-header-accent"></div>
+    <div class="pdf-header-content">
+      <div class="pdf-logo-row">
+        <div class="pdf-logo-icon">D</div>
+        <div><div class="pdf-company-name">Domia Ventures LTD</div><div class="pdf-company-sub">Property Management System</div></div>
+      </div>
+      <div class="pdf-header-right">
+        <div class="pdf-doc-type">Financial Report</div>
+        <div class="pdf-doc-meta">Date: 24 June 2026<br>Prepared by: Finance Dept<br>Report Ref: RPT-INV-2026-06</div>
+      </div>
+    </div>
+  </div>
+  <div class="pdf-title-band">
+    <div>
+      <div class="pdf-report-title">Invoices &amp; Collections Report</div>
+      <div class="pdf-report-subtitle">Rent invoices, collection status and outstanding balances — June 2026</div>
+    </div>
+    <span class="pdf-badge">PDF Report</span>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-box"><div class="kpi-value">892</div><div class="kpi-label">Total Invoices</div></div>
+    <div class="kpi-box"><div class="kpi-value green">Ksh 139.8M</div><div class="kpi-label">Billed (Annual)</div></div>
+    <div class="kpi-box"><div class="kpi-value green">Ksh 127.0M</div><div class="kpi-label">Collected</div></div>
+    <div class="kpi-box"><div class="kpi-value orange">Ksh 12.8M</div><div class="kpi-label">Outstanding</div></div>
+    <div class="kpi-box"><div class="kpi-value green">96.9%</div><div class="kpi-label">Collection Rate</div></div>
+  </div>
+  <div class="pdf-table-wrap">
+    <div class="pdf-section-title">Invoice Summary — June 2026</div>
+    <table>
+      <thead>
+        <tr>
+          <th class="row-num">#</th>
+          <th>Invoice No.</th><th>Tenant</th><th>Property</th><th>Unit</th>
+          <th>Due Date</th><th>Amount (Ksh)</th><th>Paid (Ksh)</th><th>Balance (Ksh)</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-num">1</td><td>INV-2026-0001</td><td>Alice Wanjiru</td><td>Green Valley</td><td>A-204</td><td>05 Jun 2026</td><td class="cell-num">85,000</td><td class="cell-num">85,000</td><td class="cell-num" style="color:#16a34a;">0</td><td class="cell-paid">Paid</td></tr>
+        <tr><td class="row-num">2</td><td>INV-2026-0002</td><td>Brian Otieno</td><td>Downtown Plaza</td><td>C-105</td><td>05 Jun 2026</td><td class="cell-num">120,000</td><td class="cell-num">105,000</td><td class="cell-num" style="color:#dc2626;">15,000</td><td class="cell-overdue">Overdue</td></tr>
+        <tr><td class="row-num">3</td><td>INV-2026-0003</td><td>Carol Akinyi</td><td>Westlands Heights</td><td>B-301</td><td>05 Jun 2026</td><td class="cell-num">145,000</td><td class="cell-num">145,000</td><td class="cell-num" style="color:#16a34a;">0</td><td class="cell-paid">Paid</td></tr>
+        <tr><td class="row-num">4</td><td>INV-2026-0004</td><td>Daniel Kipchoge</td><td>Kilimani Gardens</td><td>D-402</td><td>05 Jun 2026</td><td class="cell-num">95,000</td><td class="cell-num">95,000</td><td class="cell-num" style="color:#16a34a;">0</td><td class="cell-paid">Paid</td></tr>
+        <tr><td class="row-num">5</td><td>INV-2026-0005</td><td>Esther Njoki</td><td>Parklands Court</td><td>E-102</td><td>05 Jun 2026</td><td class="cell-num">65,000</td><td class="cell-num">60,000</td><td class="cell-num" style="color:#d97706;">5,000</td><td class="cell-partial">Partial</td></tr>
+        <tr><td class="row-num">6</td><td>INV-2026-0006</td><td>Francis Waweru</td><td>Green Valley</td><td>A-108</td><td>05 Jun 2026</td><td class="cell-num">75,000</td><td class="cell-num">75,000</td><td class="cell-num" style="color:#16a34a;">0</td><td class="cell-paid">Paid</td></tr>
+        <tr><td class="row-num">7</td><td>INV-2026-0007</td><td>Gloria Atieno</td><td>Lavington Court</td><td>F-201</td><td>05 Jun 2026</td><td class="cell-num">180,000</td><td class="cell-num">180,000</td><td class="cell-num" style="color:#16a34a;">0</td><td class="cell-paid">Paid</td></tr>
+        <tr><td class="row-num">8</td><td>INV-2026-0008</td><td>Henry Mwenda</td><td>Downtown Plaza</td><td>C-210</td><td>05 Jun 2026</td><td class="cell-num">110,000</td><td class="cell-num">0</td><td class="cell-num" style="color:#dc2626;">110,000</td><td class="cell-overdue">Overdue</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pdf-footer">
+    <div><span class="brand">Domia Ventures LTD</span> &mdash; Finance Department</div>
+    <div style="font-style:italic;">STRICTLY CONFIDENTIAL</div>
+    <div>Page 1 of 1</div>
+  </div>
+  <div class="pdf-footer-bottom">
+    <div>Generated: 24 June 2026 at 09:00 EAT</div>
+    <div>Ref: RPT-INV-2026-06 &nbsp;|&nbsp; &copy; 2026 Domia Ventures LTD</div>
+  </div>
+</div>
+</body>
+</html>

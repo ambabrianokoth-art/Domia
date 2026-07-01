@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Property Report - Domia Ventures LTD</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Arial', sans-serif; font-size: 10pt; background: #fff; color: #1a2a36; }
+  .page { width: 210mm; margin: 0 auto; background: #fff; box-shadow: 0 0 30px rgba(0,0,0,0.15); }
+  @media screen { .page { margin: 20px auto; min-height: 297mm; } }
+  @media print { .page { box-shadow: none; width: 100%; } @page { size: A4 landscape; margin: 0; } }
+  .pdf-header { background: #253745; padding: 0; display: flex; align-items: stretch; min-height: 80px; }
+  .pdf-header-accent { width: 8px; background: #F25022; flex-shrink: 0; }
+  .pdf-header-content { flex: 1; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .pdf-logo-row { display: flex; align-items: center; gap: 12px; }
+  .pdf-logo-icon { width: 44px; height: 44px; border-radius: 10px; background: #F25022; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 20px; }
+  .pdf-company-name { color: #fff; font-size: 17px; font-weight: 700; }
+  .pdf-company-sub { color: rgba(255,255,255,0.5); font-size: 9px; margin-top: 3px; text-transform: uppercase; }
+  .pdf-header-right { text-align: right; }
+  .pdf-doc-type { color: #F25022; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .pdf-doc-meta { color: rgba(255,255,255,0.6); font-size: 9px; line-height: 1.7; margin-top: 4px; }
+  .pdf-title-band { background: #f8fafb; border-bottom: 2px solid #F25022; padding: 16px 24px 12px; display: flex; align-items: flex-end; justify-content: space-between; }
+  .pdf-report-title { font-size: 20px; font-weight: 800; color: #253745; }
+  .pdf-report-subtitle { font-size: 10px; color: #6c757d; margin-top: 3px; }
+  .pdf-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; background: rgba(242,80,34,0.1); color: #F25022; font-size: 9px; font-weight: 700; text-transform: uppercase; }
+  .kpi-row { display: flex; gap: 0; border-bottom: 1px solid #dde3ea; }
+  .kpi-box { flex: 1; padding: 14px 20px; border-right: 1px solid #dde3ea; text-align: center; }
+  .kpi-box:last-child { border-right: none; }
+  .kpi-value { font-size: 20px; font-weight: 800; color: #253745; }
+  .kpi-value.green { color: #16a34a; }
+  .kpi-value.orange { color: #F25022; }
+  .kpi-label { font-size: 9px; color: #9aa5b4; text-transform: uppercase; margin-top: 2px; }
+  .pdf-table-wrap { padding: 20px 24px; }
+  .pdf-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #253745; border-left: 3px solid #F25022; padding-left: 8px; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  thead th { background: #253745; color: #fff; padding: 8px 8px; text-align: left; font-size: 8pt; font-weight: 700; white-space: nowrap; border: 1px solid #3d5a73; }
+  thead th:first-child { border-left: 3px solid #F25022; }
+  tbody tr:nth-child(even) td { background: #f8fafb; }
+  tbody td { padding: 6px 8px; border: 1px solid #eaecef; vertical-align: middle; }
+  .cell-active { color: #16a34a; font-weight: 600; }
+  .cell-num { text-align: right; }
+  .row-num { width: 24px; text-align: center; color: #9aa5b4; font-size: 8pt; }
+  .pdf-footer { margin: 20px 24px 0; padding: 12px 0; border-top: 1px solid #dde3ea; display: flex; justify-content: space-between; align-items: center; font-size: 8pt; color: #9aa5b4; }
+  .pdf-footer .brand { color: #F25022; font-weight: 700; }
+  .pdf-footer-bottom { background: #253745; padding: 8px 24px; display: flex; justify-content: space-between; font-size: 8pt; color: rgba(255,255,255,0.5); }
+  @media print { .pdf-header, thead th, .pdf-footer-bottom { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="pdf-header">
+    <div class="pdf-header-accent"></div>
+    <div class="pdf-header-content">
+      <div class="pdf-logo-row">
+        <div class="pdf-logo-icon">D</div>
+        <div><div class="pdf-company-name">Domia Ventures LTD</div><div class="pdf-company-sub">Property Management System</div></div>
+      </div>
+      <div class="pdf-header-right">
+        <div class="pdf-doc-type">Official Report</div>
+        <div class="pdf-doc-meta">Date: 24 June 2026<br>Prepared by: System Admin<br>Report Ref: RPT-PROP-2026-06</div>
+      </div>
+    </div>
+  </div>
+  <div class="pdf-title-band">
+    <div>
+      <div class="pdf-report-title">Property Portfolio Report</div>
+      <div class="pdf-report-subtitle">All managed properties with occupancy rates, revenue and owner details</div>
+    </div>
+    <span class="pdf-badge">PDF Report</span>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-box"><div class="kpi-value">18</div><div class="kpi-label">Properties</div></div>
+    <div class="kpi-box"><div class="kpi-value">892</div><div class="kpi-label">Total Units</div></div>
+    <div class="kpi-box"><div class="kpi-value green">94.9%</div><div class="kpi-label">Occupancy</div></div>
+    <div class="kpi-box"><div class="kpi-value orange">Ksh 139.8M</div><div class="kpi-label">Annual Revenue</div></div>
+    <div class="kpi-box"><div class="kpi-value">8</div><div class="kpi-label">Owners</div></div>
+  </div>
+  <div class="pdf-table-wrap">
+    <div class="pdf-section-title">Property Portfolio Overview</div>
+    <table>
+      <thead>
+        <tr>
+          <th class="row-num">#</th>
+          <th>Property ID</th><th>Property Name</th><th>Type</th><th>Location</th>
+          <th>Units</th><th>Occupied</th><th>Occ. %</th><th>Monthly Rev.</th><th>Owner</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-num">1</td><td>PROP-001</td><td>Green Valley Apartments</td><td>Residential</td><td>Kiambu, Thika Rd</td><td class="cell-num">120</td><td class="cell-num">112</td><td class="cell-num cell-active">93.3%</td><td class="cell-num">Ksh 9.12M</td><td>Kamau Holdings</td><td class="cell-active">Active</td></tr>
+        <tr><td class="row-num">2</td><td>PROP-002</td><td>Downtown Plaza</td><td>Commercial</td><td>Nairobi CBD</td><td class="cell-num">85</td><td class="cell-num">79</td><td class="cell-num cell-active">92.9%</td><td class="cell-num">Ksh 12.64M</td><td>Prime Investments</td><td class="cell-active">Active</td></tr>
+        <tr><td class="row-num">3</td><td>PROP-003</td><td>Westlands Heights</td><td>Residential</td><td>Westlands, Nairobi</td><td class="cell-num">64</td><td class="cell-num">60</td><td class="cell-num cell-active">93.8%</td><td class="cell-num">Ksh 8.70M</td><td>Wekeza Ltd</td><td class="cell-active">Active</td></tr>
+        <tr><td class="row-num">4</td><td>PROP-004</td><td>Kilimani Gardens</td><td>Residential</td><td>Kilimani, Nairobi</td><td class="cell-num">45</td><td class="cell-num">40</td><td class="cell-num" style="color:#d97706;">88.9%</td><td class="cell-num">Ksh 4.20M</td><td>Odhiambo Estates</td><td class="cell-active">Active</td></tr>
+        <tr><td class="row-num">5</td><td>PROP-005</td><td>Parklands Court</td><td>Mixed Use</td><td>Parklands, Nairobi</td><td class="cell-num">38</td><td class="cell-num">36</td><td class="cell-num cell-active">94.7%</td><td class="cell-num">Ksh 4.32M</td><td>Kamau Holdings</td><td class="cell-active">Active</td></tr>
+        <tr><td class="row-num">6</td><td>PROP-006</td><td>Lavington Court</td><td>Residential</td><td>Lavington, Nairobi</td><td class="cell-num">52</td><td class="cell-num">47</td><td class="cell-num" style="color:#d97706;">90.4%</td><td class="cell-num">Ksh 8.46M</td><td>Lavington Realty</td><td class="cell-active">Active</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pdf-footer">
+    <div><span class="brand">Domia Ventures LTD</span> &mdash; Property Management System</div>
+    <div style="font-style:italic;">CONFIDENTIAL</div>
+    <div>Page 1 of 1</div>
+  </div>
+  <div class="pdf-footer-bottom">
+    <div>Generated: 24 June 2026 at 09:00 EAT</div>
+    <div>Ref: RPT-PROP-2026-06 &nbsp;|&nbsp; &copy; 2026 Domia Ventures LTD</div>
+  </div>
+</div>
+</body>
+</html>

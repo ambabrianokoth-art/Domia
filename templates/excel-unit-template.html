@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Unit Export Template - Domia Ventures</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Calibri', 'Arial', sans-serif; font-size: 11pt; background: #fff; color: #1a1a1a; }
+  .brand-banner { background: #253745; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .brand-logo { display: flex; align-items: center; gap: 10px; }
+  .brand-logo-icon { width: 36px; height: 36px; border-radius: 8px; background: #F25022; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 16px; }
+  .brand-logo-text { color: #fff; font-size: 16px; font-weight: 700; }
+  .brand-logo-sub { color: rgba(255,255,255,0.55); font-size: 10px; margin-top: 1px; }
+  .brand-meta { text-align: right; color: rgba(255,255,255,0.7); font-size: 10px; line-height: 1.6; }
+  .brand-meta strong { color: #F25022; }
+  .report-header { background: #f8fafb; border-bottom: 3px solid #F25022; padding: 16px 24px; display: flex; align-items: flex-start; justify-content: space-between; }
+  .report-title { font-size: 18px; font-weight: 700; color: #253745; }
+  .report-subtitle { font-size: 11px; color: #6c757d; margin-top: 2px; }
+  .report-badges { display: flex; gap: 8px; margin-top: 6px; }
+  .badge { padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; background: rgba(242,80,34,0.1); color: #F25022; }
+  .badge.green { background: rgba(33,115,70,0.1); color: #217346; }
+  .report-info { text-align: right; font-size: 10px; color: #6c757d; line-height: 1.8; }
+  .report-info strong { color: #253745; }
+  .excel-wrapper { padding: 20px 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+  thead tr.col-header th { background: #217346; color: #fff; font-weight: 700; padding: 8px 10px; text-align: left; border: 1px solid #1a5c38; white-space: nowrap; }
+  tbody tr td { padding: 7px 10px; border: 1px solid #dde3ea; color: #1a2a36; vertical-align: middle; }
+  tbody tr:nth-child(even) td { background: #f0faf5; }
+  tbody tr:nth-child(odd) td { background: #ffffff; }
+  .cell-active { color: #16a34a; font-weight: 600; }
+  .cell-vacant { color: #d97706; font-weight: 600; }
+  .cell-maintenance { color: #dc2626; font-weight: 600; }
+  .cell-num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.row-num { background: #f4f6f8 !important; color: #9aa5b4; text-align: center; font-size: 9pt; width: 32px; border-right: 2px solid #dde3ea; }
+  th.row-num-head { background: #1a5c38 !important; width: 32px; text-align: center; }
+  tfoot tr td { background: #253745 !important; color: #fff !important; font-weight: 700; padding: 8px 10px; border: 1px solid #3d5a73; }
+  tfoot tr td.cell-num { color: #9fcf67 !important; }
+  .excel-footer { margin: 0 24px; padding: 12px 0; border-top: 2px solid #F25022; display: flex; justify-content: space-between; align-items: center; font-size: 9pt; color: #9aa5b4; }
+  .excel-footer .footer-brand { color: #F25022; font-weight: 700; }
+  @media print { .brand-banner, thead tr th, tfoot tr td { -webkit-print-color-adjust: exact; print-color-adjust: exact; } @page { margin: 10mm; size: A4 landscape; } }
+</style>
+</head>
+<body>
+
+<div class="brand-banner">
+  <div class="brand-logo">
+    <div class="brand-logo-icon">D</div>
+    <div>
+      <div class="brand-logo-text">Domia Ventures LTD</div>
+      <div class="brand-logo-sub">Property Management System</div>
+    </div>
+  </div>
+  <div class="brand-meta">
+    <div><strong>Export Date:</strong> 24 Jun 2026</div>
+    <div><strong>Template:</strong> Unit Inventory</div>
+    <div><strong>Format:</strong> Excel (.xlsx)</div>
+  </div>
+</div>
+
+<div class="report-header">
+  <div>
+    <div class="report-title">Unit Inventory Register</div>
+    <div class="report-subtitle">All units across properties with occupancy and rent details</div>
+    <div class="report-badges">
+      <span class="badge green">Excel Template</span>
+      <span class="badge">Real Estate</span>
+    </div>
+  </div>
+  <div class="report-info">
+    <div><strong>Total Units:</strong> 892</div>
+    <div><strong>Occupied:</strong> 847</div>
+    <div><strong>Vacant:</strong> 38</div>
+    <div><strong>Maintenance:</strong> 7</div>
+  </div>
+</div>
+
+<div class="excel-wrapper">
+  <table>
+    <thead>
+      <tr class="col-header">
+        <th class="row-num-head">#</th>
+        <th>Unit ID</th>
+        <th>Unit No.</th>
+        <th>Property</th>
+        <th>Floor</th>
+        <th>Type</th>
+        <th>Bedrooms</th>
+        <th>Bathrooms</th>
+        <th>Size (sqft)</th>
+        <th>Monthly Rent (Ksh)</th>
+        <th>Current Tenant</th>
+        <th>Lease Expiry</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="row-num">1</td>
+        <td>UNIT-001</td><td>A-101</td><td>Green Valley Apts</td>
+        <td class="cell-num">1</td><td>Studio</td><td class="cell-num">0</td><td class="cell-num">1</td>
+        <td class="cell-num">380</td><td class="cell-num">55,000</td>
+        <td>Mary Njoki</td><td>31 Dec 2024</td><td class="cell-active">Occupied</td>
+      </tr>
+      <tr>
+        <td class="row-num">2</td>
+        <td>UNIT-002</td><td>A-102</td><td>Green Valley Apts</td>
+        <td class="cell-num">1</td><td>1 Bedroom</td><td class="cell-num">1</td><td class="cell-num">1</td>
+        <td class="cell-num">520</td><td class="cell-num">75,000</td>
+        <td>Tom Wanjiku</td><td>31 Mar 2025</td><td class="cell-active">Occupied</td>
+      </tr>
+      <tr>
+        <td class="row-num">3</td>
+        <td>UNIT-003</td><td>A-201</td><td>Green Valley Apts</td>
+        <td class="cell-num">2</td><td>2 Bedroom</td><td class="cell-num">2</td><td class="cell-num">2</td>
+        <td class="cell-num">780</td><td class="cell-num">98,000</td>
+        <td>&mdash;</td><td>&mdash;</td><td class="cell-vacant">Vacant</td>
+      </tr>
+      <tr>
+        <td class="row-num">4</td>
+        <td>UNIT-004</td><td>B-305</td><td>Downtown Plaza</td>
+        <td class="cell-num">3</td><td>Commercial</td><td class="cell-num">&mdash;</td><td class="cell-num">&mdash;</td>
+        <td class="cell-num">1,200</td><td class="cell-num">185,000</td>
+        <td>Apex Traders</td><td>31 Dec 2025</td><td class="cell-active">Occupied</td>
+      </tr>
+      <tr>
+        <td class="row-num">5</td>
+        <td>UNIT-005</td><td>C-401</td><td>Westlands Heights</td>
+        <td class="cell-num">4</td><td>3 Bedroom</td><td class="cell-num">3</td><td class="cell-num">3</td>
+        <td class="cell-num">1,450</td><td class="cell-num">220,000</td>
+        <td>Karis Mwenda</td><td>30 Jun 2025</td><td class="cell-active">Occupied</td>
+      </tr>
+      <tr>
+        <td class="row-num">6</td>
+        <td>UNIT-006</td><td>D-102</td><td>Kilimani Gardens</td>
+        <td class="cell-num">1</td><td>1 Bedroom</td><td class="cell-num">1</td><td class="cell-num">1</td>
+        <td class="cell-num">480</td><td class="cell-num">68,000</td>
+        <td>&mdash;</td><td>&mdash;</td><td class="cell-maintenance">Maintenance</td>
+      </tr>
+      <tr>
+        <td class="row-num">7</td>
+        <td>UNIT-007</td><td>E-501</td><td>Lavington Court</td>
+        <td class="cell-num">5</td><td>Penthouse</td><td class="cell-num">4</td><td class="cell-num">4</td>
+        <td class="cell-num">2,800</td><td class="cell-num">450,000</td>
+        <td>CEO Corp Ltd</td><td>31 Dec 2026</td><td class="cell-active">Occupied</td>
+      </tr>
+      <tr>
+        <td class="row-num">8</td>
+        <td>UNIT-008</td><td>F-203</td><td>Parklands Court</td>
+        <td class="cell-num">2</td><td>2 Bedroom</td><td class="cell-num">2</td><td class="cell-num">2</td>
+        <td class="cell-num">860</td><td class="cell-num">115,000</td>
+        <td>June Auma</td><td>30 Sep 2025</td><td class="cell-active">Occupied</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="row-num"></td>
+        <td colspan="7"><strong>TOTAL / SUMMARY</strong></td>
+        <td class="cell-num"><strong>8,470</strong></td>
+        <td class="cell-num"><strong>1,266,000</strong></td>
+        <td colspan="3"></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<div class="excel-footer">
+  <div><span class="footer-brand">Domia Ventures LTD</span> &mdash; Property Management System &copy; 2026</div>
+  <div style="font-style:italic;">CONFIDENTIAL &mdash; For internal use only.</div>
+  <div>Page 1 of 1</div>
+</div>
+
+</body>
+</html>

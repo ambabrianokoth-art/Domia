@@ -1,0 +1,1318 @@
+/* ============================================
+   COMPREHENSIVE RESPONSIVE STYLES
+   Domia Ventures - Property Management System
+   Breakpoints: 1400, 1200, 992, 768, 576, 375
+   ============================================ */
+
+/* === DESKTOP XL (1400px and below) === */
+@media (max-width: 1400px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* === DESKTOP (1200px and below) === */
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .quick-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .top-header {
+    padding: 0 16px;
+  }
+
+  .search-container {
+    max-width: 220px;
+  }
+}
+
+/* === SMALL DESKTOP / LAPTOP (992px and below) === */
+@media (max-width: 992px) {
+  /* Sidebar becomes mobile drawer */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    z-index: 1050;
+    box-shadow: none;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Main content takes full width */
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Fixed header for mobile */
+  .top-header {
+    left: 0 !important;
+  }
+
+  /* Show mobile toggle, hide desktop toggle */
+  .mobile-menu-toggle {
+    display: flex !important;
+  }
+
+  .sidebar-toggle-main {
+    display: none !important;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb-container {
+    display: none;
+  }
+
+  /* Search shrinks */
+  .search-container {
+    width: 180px;
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* Summary cards */
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Quick stats */
+  .quick-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Charts */
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Offcanvas adjustments */
+  .offcanvas-panel.half {
+    width: 85%;
+  }
+
+  /* Profile */
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Detail grid */
+  .detail-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail-card.main-info {
+    grid-column: span 2;
+  }
+
+  .detail-card.wide {
+    grid-column: span 2;
+  }
+
+  /* Quick add - keep but smaller */
+  .quick-add .btn span {
+    display: none;
+  }
+}
+
+/* === TABLET (768px and below) === */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 54px;
+  }
+
+  /* Header */
+  .top-header {
+    padding: 0 14px;
+  }
+
+  .search-container {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  /* Hide quick add text on tablet */
+  .quick-add {
+    display: none;
+  }
+
+  /* Page layout */
+  .page-content {
+    padding: 12px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .page-actions {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .page-title {
+    font-size: 1.1rem;
+  }
+
+  /* Stats */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  /* Summary cards */
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* Charts */
+  .charts-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Quick stats */
+  .quick-stats-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Tables */
+  .data-card {
+    padding: 0;
+    border-radius: var(--border-radius-sm);
+  }
+
+  .table th,
+  .table td {
+    padding: 10px 10px;
+    font-size: 11px;
+  }
+
+  /* Hide non-essential table columns on mobile */
+  .table .hide-mobile {
+    display: none;
+  }
+
+  /* Filters */
+  .filters-card {
+    padding: 12px;
+  }
+
+  .filters-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .filters-row > * {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .search-filter {
+    width: 100%;
+  }
+
+  /* Table footer */
+  .table-footer {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 12px;
+  }
+
+  /* Pagination */
+  .pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Detail pages */
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .detail-card.main-info,
+  .detail-card.main-info.large,
+  .detail-card.wide {
+    grid-column: span 1;
+  }
+
+  .detail-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-info-item.full-width {
+    grid-column: span 1;
+  }
+
+  /* Offcanvas panels */
+  .offcanvas-panel.half {
+    width: 100%;
+  }
+
+  .offcanvas-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offcanvas-footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Action buttons */
+  .action-buttons {
+    gap: 4px;
+  }
+
+  /* Property grid */
+  .property-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Progress grid */
+  .progress-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Form pages */
+  .form-page-container {
+    padding: 12px;
+  }
+
+  .form-section {
+    margin-bottom: 12px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-row .form-group {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+
+  /* Settings */
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Notifications panel */
+  .notifications-panel {
+    width: 100%;
+    right: -100%;
+  }
+
+  /* Profile detail header */
+  .property-detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .unit-detail-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .owner-detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tenant-detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* === SMALL PHONES (576px and below) === */
+@media (max-width: 576px) {
+  :root {
+    --header-height: 50px;
+  }
+
+  body {
+    font-size: 11px;
+  }
+
+  /* Header compact */
+  .top-header {
+    padding: 0 10px;
+    gap: 6px;
+  }
+
+  .header-left {
+    gap: 8px;
+  }
+
+  .breadcrumb-container {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 4px;
+  }
+
+  /* Hide quick add, messages on very small */
+  .quick-add {
+    display: none;
+  }
+
+  #messagesBtn {
+    display: none;
+  }
+
+  /* User dropdown - only avatar */
+  .user-menu-btn .user-info {
+    display: none;
+  }
+
+  /* Page */
+  .page-content {
+    padding: 10px;
+  }
+
+  .page-header {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-size: 1rem;
+  }
+
+  .page-subtitle {
+    font-size: 10px;
+  }
+
+  .page-actions .btn {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  /* Stats 1-column */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .stat-card {
+    padding: 12px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .stat-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  .stat-value {
+    font-size: 1.25rem;
+  }
+
+  /* Summary cards */
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .summary-card {
+    padding: 12px;
+  }
+
+  .summary-value {
+    font-size: 1.1rem;
+  }
+
+  /* Tables */
+  .table {
+    font-size: 10px;
+  }
+
+  .table th {
+    font-size: 9px;
+    padding: 8px 8px;
+  }
+
+  .table td {
+    padding: 8px 8px;
+    font-size: 10px;
+  }
+
+  /* Hide checkbox column on mobile */
+  .table th:first-child:has(input[type="checkbox"]),
+  .table td:first-child:has(input[type="checkbox"]) {
+    display: none;
+  }
+
+  .btn-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  /* User cell */
+  .user-cell,
+  .guest-cell {
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  .avatar-sm,
+  .guest-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
+  }
+
+  /* Charts */
+  .chart-card {
+    padding: 12px;
+  }
+
+  .chart-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Quick stats */
+  .quick-stat-card {
+    padding: 12px;
+  }
+
+  .status-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Offcanvas */
+  .offcanvas-panel.half {
+    width: 100%;
+  }
+
+  .offcanvas-header {
+    padding: 12px 14px;
+  }
+
+  .offcanvas-body {
+    padding: 12px;
+  }
+
+  .offcanvas-footer {
+    padding: 10px 12px;
+    flex-direction: column;
+  }
+
+  .offcanvas-footer .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Progress cards (maintenance) */
+  .progress-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Alert */
+  .alert {
+    font-size: 11px;
+    padding: 10px 12px;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb-nav {
+    font-size: 10px;
+  }
+
+  /* Modals */
+  .modal-dialog {
+    margin: 8px;
+    max-width: calc(100% - 16px);
+  }
+
+  /* Forms */
+  .form-page-container {
+    padding: 10px;
+  }
+
+  /* Settings page */
+  .settings-card {
+    padding: 12px;
+  }
+
+  /* Filters with scroll */
+  .filters-row {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .filters-row > * {
+    min-width: 130px;
+    flex-shrink: 0;
+  }
+
+  .filters-row .search-filter {
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+}
+
+/* === EXTRA SMALL (375px and below) === */
+@media (max-width: 375px) {
+  body {
+    font-size: 10px;
+  }
+
+  .page-title {
+    font-size: 0.95rem;
+  }
+
+  .stat-value {
+    font-size: 1.1rem;
+  }
+
+  .summary-value {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 10px;
+    padding: 5px 9px;
+  }
+
+  .btn-sm {
+    font-size: 9px;
+    padding: 4px 7px;
+  }
+
+  .table {
+    font-size: 9px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === LANDSCAPE PHONES === */
+@media (max-height: 500px) and (orientation: landscape) and (max-width: 900px) {
+  .sidebar {
+    overflow-y: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .stat-card {
+    padding: 10px;
+  }
+
+  .page-content {
+    padding: 10px;
+  }
+}
+
+/* === PRINT === */
+@media print {
+  .sidebar,
+  .top-header,
+  .page-actions,
+  .filters-card,
+  .table-footer,
+  .action-buttons,
+  .btn-icon,
+  .offcanvas-panel,
+  .offcanvas-overlay,
+  .sidebar-overlay {
+    display: none !important;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .page {
+    display: block !important;
+    page-break-after: always;
+  }
+
+  .page-header {
+    border-bottom: 1px solid #000;
+    margin-bottom: 20px;
+  }
+
+  .table {
+    font-size: 10px;
+  }
+}
+
+/* === OFFCANVAS MOBILE OVERRIDE === */
+@media (max-width: 768px) {
+  .offcanvas-panel {
+    right: -100% !important;
+    width: 100% !important;
+  }
+
+  .offcanvas-panel.half {
+    right: -100% !important;
+    width: 92% !important;
+  }
+
+  .offcanvas-panel.open {
+    right: 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .offcanvas-panel,
+  .offcanvas-panel.half {
+    right: -100% !important;
+    width: 100% !important;
+  }
+
+  .offcanvas-panel.open {
+    right: 0 !important;
+  }
+}
+
+/* === RESPONSIVE STYLES FOR NEW PAGES === */
+
+/* Card Actions - Filters and Search */
+@media (max-width: 992px) {
+  .data-card .card-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .data-card .card-actions .search-box {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .data-card .card-actions .form-select {
+    min-width: 120px;
+    flex: 1;
+  }
+
+  .data-card .card-actions .btn {
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .data-card .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .data-card .card-title {
+    font-size: 13px;
+  }
+
+  .data-card .card-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .data-card .card-actions .search-box {
+    width: 100%;
+  }
+
+  .data-card .card-actions .form-select,
+  .data-card .card-actions .form-control {
+    width: 100%;
+  }
+
+  .data-card .card-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .data-card .card-header {
+    padding: 12px;
+  }
+
+  .data-card .card-title {
+    font-size: 12px;
+  }
+
+  .data-card .card-actions {
+    gap: 6px;
+  }
+
+  .data-card .card-actions .search-box input {
+    padding: 5px 10px 5px 28px;
+    font-size: 10px;
+  }
+
+  .data-card .card-actions .search-box i {
+    font-size: 10px;
+    left: 8px;
+  }
+}
+
+/* Filter Row Responsive */
+@media (max-width: 992px) {
+  .filter-row {
+    flex-wrap: wrap;
+  }
+
+  .filter-row > * {
+    min-width: 140px;
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .filter-row > * {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* Summary Cards - Extended Responsive */
+@media (max-width: 1200px) {
+  .summary-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .summary-card {
+    padding: 12px;
+  }
+
+  .summary-value {
+    font-size: 1.1rem;
+  }
+
+  .summary-label {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 576px) {
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .summary-card {
+    padding: 10px;
+  }
+
+  .summary-value {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* User Cell / Avatar Responsive */
+@media (max-width: 576px) {
+  .user-cell {
+    gap: 6px;
+  }
+
+  .avatar-sm {
+    width: 26px;
+    height: 26px;
+    font-size: 10px;
+  }
+
+  .user-cell strong {
+    font-size: 11px;
+  }
+}
+
+/* Status Badges Responsive */
+@media (max-width: 576px) {
+  .status-badge {
+    font-size: 8px;
+    padding: 2px 6px;
+  }
+
+  .badge {
+    font-size: 8px;
+    padding: 2px 6px;
+  }
+}
+
+/* Action Buttons Responsive */
+@media (max-width: 768px) {
+  .action-buttons {
+    gap: 2px;
+  }
+
+  .btn-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 576px) {
+  .action-buttons {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .btn-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+}
+
+/* Table Responsive Enhancements for New Pages */
+@media (max-width: 992px) {
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table {
+    min-width: 600px;
+  }
+
+  .table th:nth-child(n+6),
+  .table td:nth-child(n+6) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .table {
+    min-width: 500px;
+  }
+
+  .table th:nth-child(n+5),
+  .table td:nth-child(n+5) {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .table th,
+  .table td {
+    padding: 8px;
+    font-size: 10px;
+  }
+
+  .table th:nth-child(n+4),
+  .table td:nth-child(n+4) {
+    display: none;
+  }
+}
+
+/* Page Header Actions Responsive */
+@media (max-width: 992px) {
+  .page-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .page-actions .btn {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-actions {
+    width: 100%;
+  }
+
+  .page-actions .btn {
+    flex: 1;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 576px) {
+  .page-actions .btn {
+    flex: none;
+    width: 100%;
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+}
+
+/* Detail Pages Responsive */
+@media (max-width: 992px) {
+  .detail-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-card.wide,
+  .detail-card.main-info {
+    grid-column: span 1;
+  }
+}
+
+/* Modal Responsive for New Pages */
+@media (max-width: 992px) {
+  .modal-dialog {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-dialog {
+    max-width: 95%;
+    margin: 10px;
+  }
+
+  .modal-body {
+    padding: 12px;
+  }
+
+  .modal-header,
+  .modal-footer {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .modal-dialog {
+    max-width: 100%;
+    margin: 5px;
+  }
+
+  .modal-title {
+    font-size: 14px;
+  }
+
+  .modal-body {
+    padding: 10px;
+  }
+}
+
+/* Form Controls in Modals */
+@media (max-width: 768px) {
+  .modal .form-group {
+    margin-bottom: 12px;
+  }
+
+  .modal .form-label {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .modal .form-control,
+  .modal .form-select {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+}
+
+/* Cards Grid for Dashboard Views */
+@media (max-width: 1200px) {
+  .cards-grid,
+  .items-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .cards-grid,
+  .items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-grid,
+  .items-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pipeline Board Responsive */
+@media (max-width: 1200px) {
+  .pipeline-board {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .pipeline-board {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .pipeline-board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .pipeline-board {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Kanban/Status Grids */
+@media (max-width: 992px) {
+  .status-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Timeline / Activity Feed Responsive */
+@media (max-width: 768px) {
+  .timeline,
+  .activity-feed {
+    padding: 0 10px;
+  }
+
+  .timeline-item,
+  .activity-item {
+    padding: 10px;
+  }
+}
+
+/* Charts Responsive */
+@media (max-width: 992px) {
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-card.wide {
+    grid-column: span 1;
+  }
+}
+
+/* Search Box Responsive */
+@media (max-width: 992px) {
+  .search-box {
+    width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box input {
+    padding: 8px 12px 8px 32px;
+  }
+}
+
+/* Pagination Responsive */
+@media (max-width: 768px) {
+  .table-footer {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .pagination {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .pagination .btn {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
+
+/* Offcanvas Detail Panels */
+@media (max-width: 992px) {
+  .offcanvas-panel {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .offcanvas-panel {
+    width: 100%;
+  }
+
+  .offcanvas-header h4 {
+    font-size: 14px;
+  }
+}
+
+/* Info Grids in Cards */
+@media (max-width: 768px) {
+  .info-grid,
+  .detail-info-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .info-item {
+    padding: 8px 0;
+  }
+}
+
+/* Empty State Responsive */
+@media (max-width: 768px) {
+  .empty-state {
+    padding: 40px 20px;
+  }
+
+  .empty-state i {
+    font-size: 48px;
+  }
+
+  .empty-state h4 {
+    font-size: 16px;
+  }
+
+  .empty-state p {
+    font-size: 11px;
+  }
+}
+
+/* Tab Navigation Responsive */
+@media (max-width: 768px) {
+  .nav-tabs {
+    flex-wrap: wrap;
+  }
+
+  .nav-tabs .nav-link {
+    font-size: 10px;
+    padding: 8px 12px;
+  }
+}
+
+/* Date/Time Inputs */
+@media (max-width: 768px) {
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"],
+  input[type="month"] {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}
+
+/* Checkbox/Radio in Tables */
+@media (max-width: 576px) {
+  .form-check-input {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Print Styles for New Pages */
+@media print {
+  .card-actions,
+  .filter-row,
+  .search-box,
+  .action-buttons {
+    display: none !important;
+  }
+
+  .summary-cards {
+    grid-template-columns: repeat(4, 1fr);
+    break-inside: avoid;
+  }
+
+  .data-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .table {
+    font-size: 10px;
+  }
+
+  .status-badge {
+    border: 1px solid currentColor;
+  }
+}
